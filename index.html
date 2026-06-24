@@ -1,1418 +1,1976 @@
 <!doctype html>
 <html lang="zh-CN">
-  <head>
-    <meta charset="UTF-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>山野路书 · 发现中国经典徒步路线</title>
-    <meta
-      name="description"
-      content="山野路书：聚合国内经典徒步路线的风景特色、难度、行程攻略、装备建议与安全提示，帮助你更轻松规划下一次山野之旅。"
-    />
-    <style>
-      /* ============ 设计令牌：自然 / 山野 / 旅行图鉴 ============ */
-      :root {
-        --bg: #f7f3ea;            /* 米白底 */
-        --bg-soft: #efe7d6;       /* 浅棕米色 */
-        --surface: #ffffff;       /* 卡片白 */
-        --text: #2c2a26;          /* 深灰文字 */
-        --muted: #6b6558;         /* 次级文字 */
-        --faint: #9a9388;         /* 弱化文字 */
-        --line: #e3dccb;          /* 描边 */
-        --line-strong: #c9bfa6;   /* 强描边 */
 
-        --green: #3f6f4a;         /* 山野绿 */
-        --green-deep: #2c5235;    /* 深森林绿 */
-        --green-soft: #e6efe2;    /* 浅绿底 */
-        --brown: #8a6a3c;         /* 大地棕 */
-        --brown-soft: #f1e6d2;    /* 浅棕底 */
-        --sky: #6b8fa3;           /* 山雾蓝 */
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover" />
+  <meta name="theme-color" content="#2c5235" />
+  <title>山野路书 · 发现中国经典徒步路线</title>
+  <meta name="description" content="山野路书：聚合 50+ 国内经典徒步路线的风景图片、难度评级、最佳季节、行程攻略与安全提示，帮助你更轻松地规划下一次山野之旅。" />
+  <link rel="preconnect" href="https://images.unsplash.com" />
+  <style>
+    /* ============================================================
+         山野路书 · 设计系统
+         配色：米白底 + 山野绿 + 大地棕 + 高山雪
+         字体：衬线（标题，旅行图鉴感）+ 无衬线（正文）
+         ============================================================ */
+    :root {
+      --bg: #f5f0e3;
+      --bg-soft: #ece2cb;
+      --bg-warm: #faf6ec;
+      --surface: #ffffff;
 
-        --ok: #4f8a4a;            /* 入门 */
-        --info: #4a7ea0;          /* 进阶 */
-        --warn: #c98432;          /* 高阶 */
-        --bad: #a84a3b;           /* 挑战 */
+      --ink: #1f2421;
+      --text: #2c2a26;
+      --muted: #6b6558;
+      --faint: #9a9388;
 
-        --shadow-sm: 0 4px 14px rgba(60, 50, 30, 0.08);
-        --shadow-md: 0 10px 30px rgba(60, 50, 30, 0.12);
-        --shadow-lg: 0 24px 60px rgba(40, 30, 10, 0.18);
+      --line: #e3dccb;
+      --line-strong: #c9bfa6;
 
-        --radius: 18px;
-        --radius-sm: 12px;
-        --max: 1180px;
+      --green: #3f6f4a;
+      --green-deep: #234a2c;
+      --green-soft: #e1ecdb;
+      --green-darker: #18341e;
 
-        --font: "PingFang SC", "Hiragino Sans GB", "Noto Sans SC",
-          "Microsoft YaHei", system-ui, -apple-system, "Segoe UI", Roboto,
-          Helvetica, Arial, sans-serif;
-        --font-serif: "Noto Serif SC", "Songti SC", "STSong", Georgia, serif;
+      --brown: #8a6a3c;
+      --brown-deep: #5b4322;
+      --brown-soft: #f1e6d2;
+
+      --gold: #b88a3a;
+      --sky: #6b8fa3;
+      --cream: #fbf6e8;
+
+      --ok: #4f8a4a;
+      --info: #4a7ea0;
+      --warn: #c98432;
+      --bad: #a84a3b;
+
+      --shadow-xs: 0 1px 3px rgba(60, 50, 30, 0.08);
+      --shadow-sm: 0 6px 18px rgba(60, 50, 30, 0.08);
+      --shadow-md: 0 12px 32px rgba(60, 50, 30, 0.14);
+      --shadow-lg: 0 24px 60px rgba(40, 30, 10, 0.22);
+
+      --radius-xs: 8px;
+      --radius-sm: 12px;
+      --radius: 18px;
+      --radius-lg: 24px;
+      --max: 1200px;
+
+      --font: "PingFang SC", "Hiragino Sans GB", "Noto Sans SC",
+        "Microsoft YaHei", system-ui, -apple-system, "Segoe UI", Roboto,
+        Helvetica, Arial, sans-serif;
+      --font-serif: "Noto Serif SC", "Songti SC", "STSong", "Source Han Serif CN",
+        Georgia, "Times New Roman", serif;
+
+      --ease: cubic-bezier(0.2, 0.8, 0.2, 1);
+    }
+
+    *,
+    *::before,
+    *::after {
+      box-sizing: border-box;
+    }
+
+    html {
+      scroll-behavior: smooth;
+    }
+
+    body {
+      margin: 0;
+      font-family: var(--font);
+      color: var(--text);
+      background: var(--bg);
+      line-height: 1.6;
+      -webkit-font-smoothing: antialiased;
+      -moz-osx-font-smoothing: grayscale;
+    }
+
+    a {
+      color: inherit;
+      text-decoration: none;
+    }
+
+    button {
+      font-family: inherit;
+      cursor: pointer;
+      border: none;
+      background: none;
+    }
+
+    img {
+      display: block;
+      max-width: 100%;
+    }
+
+    .container {
+      max-width: var(--max);
+      margin: 0 auto;
+      padding: 0 24px;
+    }
+
+    /* ============ 顶部导航 ============ */
+    .nav {
+      position: sticky;
+      top: 0;
+      z-index: 80;
+      background: rgba(245, 240, 227, 0.82);
+      backdrop-filter: saturate(160%) blur(14px);
+      -webkit-backdrop-filter: saturate(160%) blur(14px);
+      border-bottom: 1px solid rgba(227, 220, 203, 0.7);
+    }
+
+    .nav__inner {
+      max-width: var(--max);
+      margin: 0 auto;
+      padding: 14px 24px;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 16px;
+    }
+
+    .brand {
+      display: flex;
+      align-items: center;
+      gap: 12px;
+    }
+
+    .brand__logo {
+      width: 44px;
+      height: 44px;
+      border-radius: 14px;
+      background:
+        radial-gradient(circle at 30% 30%, #5a8d63 0%, var(--green-deep) 70%);
+      display: grid;
+      place-items: center;
+      color: #f6f1e1;
+      font-size: 22px;
+      box-shadow: var(--shadow-sm), inset 0 1px 0 rgba(255, 255, 255, 0.18);
+    }
+
+    .brand__title {
+      font-family: var(--font-serif);
+      font-size: 19px;
+      font-weight: 800;
+      letter-spacing: 2px;
+      color: var(--green-darker);
+    }
+
+    .brand__sub {
+      font-size: 12px;
+      color: var(--muted);
+      margin-top: 1px;
+      letter-spacing: 0.5px;
+    }
+
+    .nav__links {
+      display: flex;
+      gap: 4px;
+      align-items: center;
+    }
+
+    .nav__link {
+      padding: 8px 14px;
+      border-radius: 999px;
+      color: var(--muted);
+      font-size: 14.5px;
+      font-weight: 500;
+      transition: all 0.18s var(--ease);
+    }
+
+    .nav__link:hover {
+      color: var(--green-deep);
+      background: var(--green-soft);
+    }
+
+    .nav__toggle {
+      display: none;
+      border: 1px solid var(--line-strong);
+      border-radius: 10px;
+      padding: 6px 10px;
+      font-size: 18px;
+      color: var(--text);
+    }
+
+    /* ============ 首屏 Hero ============ */
+    .hero {
+      position: relative;
+      min-height: 92vh;
+      display: flex;
+      align-items: center;
+      overflow: hidden;
+      isolation: isolate;
+    }
+
+    .hero__bg {
+      position: absolute;
+      inset: 0;
+      z-index: -2;
+      background:
+        linear-gradient(180deg, rgba(20, 32, 24, 0.32) 0%, rgba(20, 32, 24, 0.55) 60%, rgba(20, 32, 24, 0.85) 100%),
+        url("https://images.unsplash.com/photo-1464822759023-fed622ff2c3b?auto=format&fit=crop&w=1920&q=85") center/cover no-repeat;
+      background-color: var(--green-darker);
+    }
+
+    .hero__bg::after {
+      content: "";
+      position: absolute;
+      inset: 0;
+      background:
+        radial-gradient(900px 400px at 80% 20%, rgba(255, 230, 180, 0.18), transparent 60%),
+        radial-gradient(700px 500px at 10% 100%, rgba(63, 111, 74, 0.45), transparent 70%);
+    }
+
+    .hero__inner {
+      position: relative;
+      max-width: var(--max);
+      margin: 0 auto;
+      padding: 110px 24px 90px;
+      width: 100%;
+      color: #faf6ec;
+    }
+
+    .hero__eyebrow {
+      display: inline-flex;
+      align-items: center;
+      gap: 8px;
+      padding: 7px 14px;
+      font-size: 13px;
+      background: rgba(255, 255, 255, 0.12);
+      backdrop-filter: blur(6px);
+      color: #fbf6e8;
+      border-radius: 999px;
+      border: 1px solid rgba(255, 255, 255, 0.22);
+      font-weight: 500;
+      letter-spacing: 1px;
+    }
+
+    .hero__title {
+      margin: 22px 0 18px;
+      font-family: var(--font-serif);
+      font-size: clamp(36px, 6.4vw, 68px);
+      line-height: 1.12;
+      font-weight: 800;
+      color: #fffaee;
+      letter-spacing: 2px;
+      text-shadow: 0 4px 24px rgba(0, 0, 0, 0.35);
+    }
+
+    .hero__title em {
+      font-style: normal;
+      background: linear-gradient(90deg, #ffd58a 0%, #f3a76b 100%);
+      -webkit-background-clip: text;
+      background-clip: text;
+      color: transparent;
+    }
+
+    .hero__desc {
+      font-size: clamp(15px, 1.6vw, 17.5px);
+      color: rgba(255, 250, 238, 0.88);
+      max-width: 620px;
+      margin: 0 0 32px;
+      line-height: 1.78;
+    }
+
+    .hero__actions {
+      display: flex;
+      gap: 14px;
+      flex-wrap: wrap;
+      align-items: center;
+    }
+
+    .hero__cta {
+      display: inline-flex;
+      align-items: center;
+      gap: 10px;
+      padding: 16px 30px;
+      background: linear-gradient(135deg, #f3a76b, #c98432);
+      color: #fff;
+      border-radius: 999px;
+      font-weight: 600;
+      font-size: 15.5px;
+      box-shadow: 0 14px 28px rgba(180, 100, 40, 0.4);
+      transition: transform 0.22s var(--ease), box-shadow 0.22s var(--ease);
+    }
+
+    .hero__cta:hover {
+      transform: translateY(-3px);
+      box-shadow: 0 18px 36px rgba(180, 100, 40, 0.55);
+    }
+
+    .hero__cta svg {
+      width: 18px;
+      height: 18px;
+    }
+
+    .hero__cta-secondary {
+      display: inline-flex;
+      align-items: center;
+      gap: 8px;
+      padding: 15px 26px;
+      background: rgba(255, 255, 255, 0.1);
+      backdrop-filter: blur(6px);
+      color: #fffaee;
+      border-radius: 999px;
+      border: 1px solid rgba(255, 255, 255, 0.28);
+      font-weight: 500;
+      font-size: 14.5px;
+      transition: all 0.2s var(--ease);
+    }
+
+    .hero__cta-secondary:hover {
+      background: rgba(255, 255, 255, 0.18);
+      border-color: rgba(255, 255, 255, 0.5);
+    }
+
+    .hero__stats {
+      display: flex;
+      gap: 40px;
+      margin-top: 44px;
+      padding-top: 28px;
+      border-top: 1px solid rgba(255, 255, 255, 0.18);
+      flex-wrap: wrap;
+    }
+
+    .hero__stat strong {
+      display: block;
+      font-size: 32px;
+      font-weight: 800;
+      color: #fffaee;
+      font-family: var(--font-serif);
+      letter-spacing: 1px;
+    }
+
+    .hero__stat span {
+      font-size: 13px;
+      color: rgba(255, 250, 238, 0.65);
+      letter-spacing: 0.5px;
+    }
+
+    .hero__scroll {
+      position: absolute;
+      bottom: 24px;
+      left: 50%;
+      transform: translateX(-50%);
+      color: rgba(255, 255, 255, 0.7);
+      font-size: 12px;
+      letter-spacing: 2px;
+      animation: bounce 2.4s infinite;
+    }
+
+    @keyframes bounce {
+
+      0%,
+      100% {
+        transform: translate(-50%, 0);
       }
 
-      *,
-      *::before,
-      *::after {
-        box-sizing: border-box;
+      50% {
+        transform: translate(-50%, 8px);
+      }
+    }
+
+    /* ============ 通用 section ============ */
+    .section {
+      padding: 80px 0 36px;
+    }
+
+    .section__head {
+      text-align: center;
+      margin-bottom: 40px;
+    }
+
+    .section__eyebrow {
+      font-size: 12px;
+      color: var(--brown);
+      font-weight: 600;
+      letter-spacing: 4px;
+      text-transform: uppercase;
+    }
+
+    .section__title {
+      margin: 8px 0 12px;
+      font-family: var(--font-serif);
+      font-size: clamp(26px, 3.6vw, 36px);
+      font-weight: 800;
+      color: var(--green-darker);
+      letter-spacing: 1.5px;
+    }
+
+    .section__desc {
+      color: var(--muted);
+      max-width: 620px;
+      margin: 0 auto;
+      font-size: 15px;
+    }
+
+    /* ============ 工具栏：搜索 + 筛选 ============ */
+    .toolbar {
+      background: var(--surface);
+      border-radius: var(--radius);
+      box-shadow: var(--shadow-sm);
+      border: 1px solid var(--line);
+      padding: 16px;
+      margin-bottom: 28px;
+    }
+
+    .toolbar__row {
+      display: flex;
+      gap: 12px;
+      flex-wrap: wrap;
+      align-items: center;
+    }
+
+    .search {
+      position: relative;
+      flex: 1;
+      min-width: 220px;
+    }
+
+    .search__icon {
+      position: absolute;
+      left: 16px;
+      top: 50%;
+      transform: translateY(-50%);
+      color: var(--faint);
+      pointer-events: none;
+    }
+
+    .search__input {
+      width: 100%;
+      padding: 12px 16px 12px 44px;
+      font-size: 14.5px;
+      border: 1px solid var(--line);
+      border-radius: 999px;
+      background: var(--bg-warm);
+      color: var(--text);
+      font-family: inherit;
+      transition: all 0.18s var(--ease);
+    }
+
+    .search__input:focus {
+      outline: none;
+      border-color: var(--green);
+      background: #fff;
+      box-shadow: 0 0 0 4px rgba(63, 111, 74, 0.12);
+    }
+
+    .toolbar__count {
+      font-size: 13px;
+      color: var(--muted);
+      padding: 0 6px;
+    }
+
+    .toolbar__count strong {
+      color: var(--green-deep);
+      font-size: 16px;
+    }
+
+    .filters {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 8px;
+      margin-top: 14px;
+    }
+
+    .filter-group {
+      display: flex;
+      gap: 6px;
+      flex-wrap: wrap;
+      align-items: center;
+      padding-right: 14px;
+      border-right: 1px solid var(--line);
+      margin-right: 6px;
+    }
+
+    .filter-group:last-child {
+      border-right: none;
+      margin-right: 0;
+      padding-right: 0;
+    }
+
+    .filter-group__label {
+      font-size: 12.5px;
+      color: var(--faint);
+      margin-right: 4px;
+      letter-spacing: 0.5px;
+    }
+
+    .filter {
+      padding: 7px 14px;
+      font-size: 13px;
+      background: var(--bg-warm);
+      border: 1px solid transparent;
+      border-radius: 999px;
+      color: var(--muted);
+      font-weight: 500;
+      transition: all 0.18s var(--ease);
+    }
+
+    .filter:hover {
+      color: var(--green-deep);
+      border-color: var(--green);
+    }
+
+    .filter.is-active {
+      background: var(--green-deep);
+      color: #f6f1e1;
+      border-color: var(--green-deep);
+      box-shadow: var(--shadow-xs);
+    }
+
+    /* ============ 路线卡片 ============ */
+    .grid {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 22px;
+    }
+
+    .card {
+      background: var(--surface);
+      border-radius: var(--radius);
+      overflow: hidden;
+      box-shadow: var(--shadow-sm);
+      border: 1px solid var(--line);
+      transition: transform 0.28s var(--ease), box-shadow 0.28s var(--ease);
+      display: flex;
+      flex-direction: column;
+      cursor: pointer;
+    }
+
+    .card:hover {
+      transform: translateY(-6px);
+      box-shadow: var(--shadow-lg);
+      border-color: var(--line-strong);
+    }
+
+    .card:hover .card__img {
+      transform: scale(1.06);
+    }
+
+    .card__cover {
+      position: relative;
+      aspect-ratio: 4 / 3;
+      overflow: hidden;
+      background: linear-gradient(135deg, var(--green) 0%, var(--green-deep) 100%);
+    }
+
+    .card__img {
+      position: absolute;
+      inset: 0;
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      transition: transform 0.6s var(--ease);
+    }
+
+    .card__cover-overlay {
+      position: absolute;
+      inset: auto 0 0 0;
+      height: 50%;
+      background: linear-gradient(180deg, transparent 0%, rgba(20, 30, 18, 0.65) 100%);
+    }
+
+    .card__badge {
+      position: absolute;
+      top: 12px;
+      left: 12px;
+      padding: 5px 11px;
+      font-size: 12px;
+      font-weight: 600;
+      border-radius: 999px;
+      color: #fff;
+      backdrop-filter: blur(4px);
+    }
+
+    .badge--ok {
+      background: rgba(79, 138, 74, 0.95);
+    }
+
+    .badge--info {
+      background: rgba(74, 126, 160, 0.95);
+    }
+
+    .badge--warn {
+      background: rgba(201, 132, 50, 0.95);
+    }
+
+    .badge--bad {
+      background: rgba(168, 74, 59, 0.95);
+    }
+
+    .card__season-badge {
+      position: absolute;
+      top: 12px;
+      right: 12px;
+      padding: 5px 10px;
+      font-size: 11.5px;
+      font-weight: 500;
+      border-radius: 999px;
+      color: #fff;
+      background: rgba(0, 0, 0, 0.45);
+      backdrop-filter: blur(4px);
+    }
+
+    .card__cover-title {
+      position: absolute;
+      left: 16px;
+      right: 16px;
+      bottom: 14px;
+      color: #fff;
+    }
+
+    .card__cover-title h3 {
+      font-family: var(--font-serif);
+      font-size: 20px;
+      margin: 0 0 4px;
+      letter-spacing: 1px;
+      font-weight: 800;
+      text-shadow: 0 2px 10px rgba(0, 0, 0, 0.45);
+    }
+
+    .card__cover-title .region {
+      font-size: 12.5px;
+      opacity: 0.92;
+      display: flex;
+      align-items: center;
+      gap: 4px;
+    }
+
+    .card__body {
+      padding: 18px 20px 20px;
+      display: flex;
+      flex-direction: column;
+      flex: 1;
+    }
+
+    .card__highlight {
+      font-size: 13.5px;
+      color: var(--text);
+      line-height: 1.65;
+      margin: 0 0 14px;
+      flex: 1;
+      display: -webkit-box;
+      -webkit-line-clamp: 2;
+      line-clamp: 2;
+      -webkit-box-orient: vertical;
+      overflow: hidden;
+    }
+
+    .card__meta {
+      display: flex;
+      gap: 14px;
+      padding: 10px 0;
+      border-top: 1px solid var(--line);
+      margin-bottom: 14px;
+      font-size: 12px;
+      color: var(--muted);
+    }
+
+    .card__meta-item {
+      display: flex;
+      align-items: center;
+      gap: 4px;
+    }
+
+    .card__meta-item svg {
+      width: 13px;
+      height: 13px;
+      opacity: 0.7;
+    }
+
+    .card__btn {
+      align-self: stretch;
+      background: var(--bg-warm);
+      color: var(--green-deep);
+      padding: 11px 16px;
+      border-radius: var(--radius-sm);
+      font-size: 13.5px;
+      font-weight: 600;
+      text-align: center;
+      transition: all 0.2s var(--ease);
+      border: 1px solid var(--line);
+    }
+
+    .card__btn:hover {
+      background: var(--green-deep);
+      color: #f6f1e1;
+      border-color: var(--green-deep);
+    }
+
+    .empty {
+      grid-column: 1 / -1;
+      text-align: center;
+      padding: 80px 20px;
+      color: var(--muted);
+      background: var(--surface);
+      border-radius: var(--radius);
+      border: 1px dashed var(--line-strong);
+    }
+
+    .empty__icon {
+      font-size: 48px;
+      margin-bottom: 14px;
+      filter: grayscale(0.4);
+    }
+
+    .empty__title {
+      font-size: 16px;
+      font-weight: 600;
+      color: var(--text);
+      margin-bottom: 6px;
+    }
+
+    .empty__hint {
+      font-size: 13px;
+    }
+
+    /* ============ 加载更多 ============ */
+    .more-wrap {
+      text-align: center;
+      margin-top: 36px;
+    }
+
+    .more-btn {
+      padding: 14px 32px;
+      background: var(--surface);
+      color: var(--green-deep);
+      border-radius: 999px;
+      font-size: 14.5px;
+      font-weight: 600;
+      border: 1.5px solid var(--green-deep);
+      transition: all 0.2s var(--ease);
+    }
+
+    .more-btn:hover {
+      background: var(--green-deep);
+      color: #f6f1e1;
+      transform: translateY(-2px);
+      box-shadow: var(--shadow-md);
+    }
+
+    /* ============ 安全提示 ============ */
+    .safety {
+      background: linear-gradient(180deg, var(--bg-soft) 0%, var(--bg) 100%);
+    }
+
+    .safety-grid {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 18px;
+    }
+
+    .safety-item {
+      background: var(--surface);
+      border-radius: var(--radius-sm);
+      padding: 22px 22px 24px;
+      border: 1px solid var(--line);
+      display: flex;
+      gap: 16px;
+      align-items: flex-start;
+      transition: transform 0.22s var(--ease), box-shadow 0.22s var(--ease);
+    }
+
+    .safety-item:hover {
+      transform: translateY(-3px);
+      box-shadow: var(--shadow-md);
+    }
+
+    .safety-item__icon {
+      flex: none;
+      width: 46px;
+      height: 46px;
+      border-radius: 12px;
+      background: var(--green-soft);
+      color: var(--green-deep);
+      display: grid;
+      place-items: center;
+      font-size: 22px;
+    }
+
+    .safety-item__title {
+      font-size: 15px;
+      font-weight: 700;
+      margin: 0 0 6px;
+      color: var(--text);
+    }
+
+    .safety-item__desc {
+      margin: 0;
+      font-size: 13.5px;
+      color: var(--muted);
+      line-height: 1.7;
+    }
+
+    /* ============ 关于 ============ */
+    .about {
+      background:
+        linear-gradient(120deg, rgba(20, 30, 18, 0.92) 0%, rgba(63, 111, 74, 0.85) 100%),
+        url("https://images.unsplash.com/photo-1486870591958-9b9d0d1dda99?auto=format&fit=crop&w=1600&q=80") center/cover;
+      color: #f6f1e1;
+      margin-top: 56px;
+      padding: 80px 0;
+      position: relative;
+    }
+
+    .about__inner {
+      max-width: 820px;
+      margin: 0 auto;
+      text-align: center;
+      padding: 0 24px;
+    }
+
+    .about .section__eyebrow {
+      color: #d8c69a;
+    }
+
+    .about .section__title {
+      color: #f6f1e1;
+    }
+
+    .about__text {
+      font-size: 16px;
+      color: #e8dec5;
+      line-height: 1.95;
+      max-width: 720px;
+      margin: 14px auto 0;
+    }
+
+    .about__features {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 16px;
+      margin-top: 36px;
+    }
+
+    .about__feature {
+      background: rgba(255, 255, 255, 0.08);
+      backdrop-filter: blur(8px);
+      border: 1px solid rgba(255, 255, 255, 0.12);
+      border-radius: var(--radius-sm);
+      padding: 18px 18px 20px;
+    }
+
+    .about__feature h4 {
+      margin: 8px 0 4px;
+      font-size: 14.5px;
+      color: #fffaee;
+      font-weight: 700;
+    }
+
+    .about__feature p {
+      margin: 0;
+      font-size: 12.5px;
+      color: rgba(232, 222, 197, 0.85);
+      line-height: 1.65;
+    }
+
+    .about__feature-icon {
+      font-size: 22px;
+    }
+
+    /* ============ 页脚 ============ */
+    .footer {
+      background: #1a221d;
+      color: #d8d2bf;
+      padding: 42px 0 30px;
+      font-size: 13.5px;
+    }
+
+    .footer__inner {
+      max-width: var(--max);
+      margin: 0 auto;
+      padding: 0 24px;
+      display: flex;
+      justify-content: space-between;
+      flex-wrap: wrap;
+      gap: 22px;
+    }
+
+    .footer__brand {
+      font-family: var(--font-serif);
+      font-size: 19px;
+      color: #f6f1e1;
+      font-weight: 700;
+      letter-spacing: 2px;
+    }
+
+    .footer__meta {
+      color: #a39c87;
+      font-size: 13px;
+      line-height: 1.85;
+      margin-top: 8px;
+    }
+
+    .footer__tags {
+      display: flex;
+      gap: 8px;
+      flex-wrap: wrap;
+      margin-top: 6px;
+    }
+
+    .footer__tag {
+      padding: 4px 12px;
+      background: rgba(255, 255, 255, 0.07);
+      border-radius: 999px;
+      font-size: 12px;
+      color: #d8d2bf;
+    }
+
+    /* ============ 详情弹窗 ============ */
+    .modal {
+      position: fixed;
+      inset: 0;
+      z-index: 200;
+      display: none;
+      align-items: flex-start;
+      justify-content: center;
+      padding: 32px 16px;
+      overflow-y: auto;
+    }
+
+    .modal.is-open {
+      display: flex;
+    }
+
+    .modal__backdrop {
+      position: fixed;
+      inset: 0;
+      background: rgba(15, 22, 16, 0.65);
+      backdrop-filter: blur(6px);
+    }
+
+    .modal__panel {
+      position: relative;
+      background: var(--surface);
+      border-radius: var(--radius-lg);
+      width: 100%;
+      max-width: 920px;
+      box-shadow: var(--shadow-lg);
+      overflow: hidden;
+      animation: pop 0.28s var(--ease);
+    }
+
+    @keyframes pop {
+      from {
+        opacity: 0;
+        transform: translateY(20px) scale(0.97);
       }
 
-      html {
-        scroll-behavior: smooth;
+      to {
+        opacity: 1;
+        transform: translateY(0) scale(1);
+      }
+    }
+
+    .modal__close {
+      position: absolute;
+      top: 16px;
+      right: 16px;
+      width: 40px;
+      height: 40px;
+      border-radius: 50%;
+      background: rgba(255, 255, 255, 0.95);
+      border: 1px solid var(--line);
+      font-size: 22px;
+      color: var(--text);
+      display: grid;
+      place-items: center;
+      z-index: 5;
+      transition: all 0.2s var(--ease);
+      box-shadow: var(--shadow-sm);
+    }
+
+    .modal__close:hover {
+      background: #fff;
+      transform: rotate(90deg);
+    }
+
+    .modal__cover {
+      aspect-ratio: 21 / 9;
+      position: relative;
+      overflow: hidden;
+      background: var(--green-deep);
+    }
+
+    .modal__cover img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+    }
+
+    .modal__cover-overlay {
+      position: absolute;
+      inset: 0;
+      background: linear-gradient(180deg, rgba(0, 0, 0, 0.05) 0%, rgba(0, 0, 0, 0.65) 100%);
+      display: flex;
+      align-items: flex-end;
+      padding: 30px;
+    }
+
+    .modal__cover-info {
+      color: #fff;
+    }
+
+    .modal__cover-info .level-badge {
+      display: inline-block;
+      padding: 4px 10px;
+      font-size: 12px;
+      border-radius: 999px;
+      margin-bottom: 12px;
+    }
+
+    .modal__cover-info h3 {
+      margin: 0 0 8px;
+      font-family: var(--font-serif);
+      font-size: clamp(24px, 4vw, 32px);
+      letter-spacing: 1.5px;
+      text-shadow: 0 2px 10px rgba(0, 0, 0, 0.4);
+    }
+
+    .modal__cover-info p {
+      margin: 0;
+      font-size: 14px;
+      opacity: 0.92;
+    }
+
+    .modal__content {
+      padding: 28px 32px 36px;
+      max-height: 65vh;
+      overflow-y: auto;
+    }
+
+    .modal__quick {
+      display: grid;
+      grid-template-columns: repeat(4, 1fr);
+      gap: 0;
+      background: var(--bg-warm);
+      border-radius: var(--radius-sm);
+      margin-bottom: 28px;
+      overflow: hidden;
+      border: 1px solid var(--line);
+    }
+
+    .quick__item {
+      text-align: center;
+      padding: 16px 12px;
+      border-right: 1px solid var(--line);
+    }
+
+    .quick__item:last-child {
+      border-right: none;
+    }
+
+    .quick__icon {
+      font-size: 18px;
+      margin-bottom: 4px;
+      display: block;
+    }
+
+    .quick__label {
+      font-size: 11.5px;
+      color: var(--muted);
+      margin-bottom: 4px;
+      letter-spacing: 0.5px;
+    }
+
+    .quick__value {
+      font-size: 14px;
+      font-weight: 700;
+      color: var(--green-deep);
+    }
+
+    .modal__sec {
+      margin-bottom: 22px;
+      background: var(--bg-warm);
+      border-radius: var(--radius-sm);
+      padding: 20px 22px;
+      border: 1px solid var(--line);
+    }
+
+    .modal__sec-title {
+      display: flex;
+      align-items: center;
+      gap: 10px;
+      font-size: 16px;
+      font-weight: 700;
+      color: var(--green-darker);
+      margin: 0 0 14px;
+    }
+
+    .modal__sec-icon {
+      width: 30px;
+      height: 30px;
+      border-radius: 8px;
+      background: var(--green-deep);
+      color: #f6f1e1;
+      display: grid;
+      place-items: center;
+      font-size: 14px;
+    }
+
+    .modal__sec p,
+    .modal__sec li {
+      color: var(--text);
+      line-height: 1.8;
+      font-size: 14.5px;
+    }
+
+    .modal__sec ul {
+      margin: 0;
+      padding-left: 22px;
+    }
+
+    .modal__sec li {
+      margin-bottom: 8px;
+      color: #4a4640;
+    }
+
+    .modal__highlights {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 8px;
+      margin-top: 12px;
+    }
+
+    .highlight-pill {
+      background: var(--brown-soft);
+      color: var(--brown-deep);
+      padding: 6px 12px;
+      border-radius: 999px;
+      font-size: 12.5px;
+      font-weight: 500;
+    }
+
+    .timeline {
+      position: relative;
+      padding-left: 26px;
+    }
+
+    .timeline::before {
+      content: "";
+      position: absolute;
+      left: 7px;
+      top: 6px;
+      bottom: 6px;
+      width: 2px;
+      background: linear-gradient(180deg, var(--green) 0%, var(--brown) 100%);
+      opacity: 0.35;
+    }
+
+    .timeline__item {
+      position: relative;
+      margin-bottom: 14px;
+    }
+
+    .timeline__item:last-child {
+      margin-bottom: 0;
+    }
+
+    .timeline__item::before {
+      content: "";
+      position: absolute;
+      left: -23px;
+      top: 6px;
+      width: 12px;
+      height: 12px;
+      border-radius: 50%;
+      background: var(--green-deep);
+      box-shadow: 0 0 0 3px var(--bg-warm);
+    }
+
+    .timeline__day {
+      font-weight: 700;
+      color: var(--green-darker);
+      font-size: 13.5px;
+      margin-right: 6px;
+    }
+
+    .timeline__text {
+      font-size: 14px;
+      color: #4a4640;
+      line-height: 1.7;
+    }
+
+    body.no-scroll {
+      overflow: hidden;
+    }
+
+    /* ============ 返回顶部 ============ */
+    .to-top {
+      position: fixed;
+      right: 22px;
+      bottom: 22px;
+      width: 46px;
+      height: 46px;
+      border-radius: 50%;
+      background: var(--green-deep);
+      color: #f6f1e1;
+      display: grid;
+      place-items: center;
+      box-shadow: var(--shadow-md);
+      opacity: 0;
+      visibility: hidden;
+      transform: translateY(8px);
+      transition: all 0.25s var(--ease);
+      z-index: 90;
+    }
+
+    .to-top.is-visible {
+      opacity: 1;
+      visibility: visible;
+      transform: translateY(0);
+    }
+
+    .to-top:hover {
+      background: var(--green);
+      transform: translateY(-2px);
+    }
+
+    /* ============ 响应式 ============ */
+    @media (max-width: 1080px) {
+      .grid {
+        grid-template-columns: repeat(2, 1fr);
       }
 
-      body {
-        margin: 0;
-        font-family: var(--font);
-        color: var(--text);
-        background: var(--bg);
-        line-height: 1.6;
-        -webkit-font-smoothing: antialiased;
+      .safety-grid {
+        grid-template-columns: repeat(2, 1fr);
+      }
+    }
+
+    @media (max-width: 760px) {
+      .nav__inner {
+        padding: 12px 16px;
       }
 
-      a {
-        color: inherit;
-        text-decoration: none;
+      .brand__sub {
+        display: none;
       }
 
-      button {
-        font-family: inherit;
-        cursor: pointer;
+      .nav__links {
+        display: none;
       }
 
-      img {
-        display: block;
-        max-width: 100%;
+      .nav__links.is-open {
+        display: flex;
+        position: absolute;
+        top: 100%;
+        left: 0;
+        right: 0;
+        flex-direction: column;
+        background: rgba(245, 240, 227, 0.98);
+        padding: 12px 20px 16px;
+        border-bottom: 1px solid var(--line);
+        gap: 2px;
+        box-shadow: var(--shadow-md);
+      }
+
+      .nav__toggle {
+        display: inline-flex;
+      }
+
+      .hero {
+        min-height: auto;
+        padding-bottom: 24px;
+      }
+
+      .hero__inner {
+        padding: 80px 20px 60px;
+      }
+
+      .hero__title {
+        letter-spacing: 1px;
+      }
+
+      .hero__stats {
+        gap: 24px;
+        padding-top: 20px;
+        margin-top: 30px;
+      }
+
+      .hero__stat strong {
+        font-size: 26px;
+      }
+
+      .hero__scroll {
+        display: none;
       }
 
       .container {
-        max-width: var(--max);
-        margin: 0 auto;
-        padding: 0 24px;
+        padding: 0 16px;
       }
 
-      /* ============ 顶部导航 ============ */
-      .nav {
-        position: sticky;
-        top: 0;
-        z-index: 80;
-        background: rgba(247, 243, 234, 0.86);
-        backdrop-filter: saturate(160%) blur(10px);
-        -webkit-backdrop-filter: saturate(160%) blur(10px);
-        border-bottom: 1px solid var(--line);
-      }
-      .nav__inner {
-        max-width: var(--max);
-        margin: 0 auto;
-        padding: 14px 24px;
-        display: flex;
-        align-items: center;
-        justify-content: space-between;
-        gap: 16px;
-      }
-      .brand {
-        display: flex;
-        align-items: center;
-        gap: 12px;
-      }
-      .brand__logo {
-        width: 42px;
-        height: 42px;
-        border-radius: 12px;
-        background: linear-gradient(135deg, var(--green) 0%, var(--green-deep) 100%);
-        display: grid;
-        place-items: center;
-        color: #f6f1e1;
-        font-size: 22px;
-        box-shadow: var(--shadow-sm);
-      }
-      .brand__title {
-        font-size: 18px;
-        font-weight: 800;
-        letter-spacing: 1px;
-        color: var(--text);
-      }
-      .brand__sub {
-        font-size: 12px;
-        color: var(--muted);
-        margin-top: 1px;
-      }
-      .nav__links {
-        display: flex;
-        gap: 4px;
-        align-items: center;
-      }
-      .nav__link {
-        padding: 8px 14px;
-        border-radius: 999px;
-        color: var(--muted);
-        font-size: 14.5px;
-        font-weight: 500;
-        transition: all 0.18s ease;
-      }
-      .nav__link:hover {
-        color: var(--green-deep);
-        background: var(--green-soft);
-      }
-      .nav__toggle {
-        display: none;
-        background: transparent;
-        border: 1px solid var(--line-strong);
-        border-radius: 10px;
-        padding: 6px 10px;
-        font-size: 18px;
-        color: var(--text);
-      }
-
-      /* ============ 首屏 Hero ============ */
-      .hero {
-        position: relative;
-        overflow: hidden;
-        background: linear-gradient(
-            180deg,
-            rgba(247, 243, 234, 0) 0%,
-            rgba(247, 243, 234, 0.4) 100%
-          ),
-          radial-gradient(
-            1100px 600px at 80% 20%,
-            rgba(63, 111, 74, 0.18),
-            transparent 70%
-          ),
-          radial-gradient(
-            900px 500px at 10% 90%,
-            rgba(138, 106, 60, 0.14),
-            transparent 70%
-          ),
-          var(--bg);
-      }
-      .hero__inner {
-        max-width: var(--max);
-        margin: 0 auto;
-        padding: 72px 24px 88px;
-        display: grid;
-        grid-template-columns: 1.05fr 0.95fr;
-        align-items: center;
-        gap: 48px;
-      }
-      .hero__eyebrow {
-        display: inline-flex;
-        align-items: center;
-        gap: 8px;
-        padding: 6px 12px;
-        font-size: 12.5px;
-        background: var(--green-soft);
-        color: var(--green-deep);
-        border-radius: 999px;
-        border: 1px solid #cfe0c8;
-        font-weight: 600;
-        letter-spacing: 0.5px;
-      }
-      .hero__title {
-        margin: 18px 0 14px;
-        font-family: var(--font-serif);
-        font-size: 46px;
-        line-height: 1.18;
-        font-weight: 800;
-        color: var(--green-deep);
-        letter-spacing: 1px;
-      }
-      .hero__title em {
-        font-style: normal;
-        color: var(--brown);
-      }
-      .hero__desc {
-        font-size: 16px;
-        color: var(--muted);
-        max-width: 540px;
-        margin: 0 0 28px;
-      }
-      .hero__cta {
-        display: inline-flex;
-        align-items: center;
-        gap: 10px;
-        padding: 14px 26px;
-        background: var(--green-deep);
-        color: #f6f1e1;
-        border-radius: 999px;
-        font-weight: 600;
-        font-size: 15px;
-        border: none;
-        box-shadow: var(--shadow-md);
-        transition: transform 0.18s ease, box-shadow 0.18s ease, background 0.18s ease;
-      }
-      .hero__cta:hover {
-        transform: translateY(-2px);
-        background: var(--green);
-        box-shadow: var(--shadow-lg);
-      }
-      .hero__cta svg {
-        width: 16px;
-        height: 16px;
-      }
-      .hero__stats {
-        display: flex;
-        gap: 28px;
-        margin-top: 36px;
-        flex-wrap: wrap;
-      }
-      .hero__stat strong {
-        display: block;
-        font-size: 26px;
-        font-weight: 800;
-        color: var(--green-deep);
-        font-family: var(--font-serif);
-      }
-      .hero__stat span {
-        font-size: 13px;
-        color: var(--muted);
-      }
-
-      /* Hero 右侧山形插画 */
-      .hero__art {
-        position: relative;
-        aspect-ratio: 1 / 1;
-        max-width: 460px;
-        justify-self: end;
-        width: 100%;
-      }
-      .hero__art svg {
-        width: 100%;
-        height: 100%;
-        filter: drop-shadow(0 18px 28px rgba(0, 0, 0, 0.12));
-      }
-
-      /* ============ 通用：节标题 ============ */
       .section {
-        padding: 78px 0 36px;
-      }
-      .section__head {
-        text-align: center;
-        margin-bottom: 36px;
-      }
-      .section__eyebrow {
-        font-size: 13px;
-        color: var(--brown);
-        font-weight: 600;
-        letter-spacing: 4px;
-        text-transform: uppercase;
-      }
-      .section__title {
-        margin: 8px 0 10px;
-        font-family: var(--font-serif);
-        font-size: 32px;
-        font-weight: 800;
-        color: var(--green-deep);
-        letter-spacing: 1px;
-      }
-      .section__desc {
-        color: var(--muted);
-        max-width: 600px;
-        margin: 0 auto;
+        padding: 56px 0 24px;
       }
 
-      /* ============ 路线筛选 ============ */
-      .filters {
-        display: flex;
-        justify-content: center;
-        flex-wrap: wrap;
-        gap: 10px;
-        margin-bottom: 32px;
-      }
-      .filter {
-        padding: 9px 20px;
-        font-size: 14px;
-        background: var(--surface);
-        border: 1px solid var(--line);
-        border-radius: 999px;
-        color: var(--muted);
-        font-weight: 500;
-        transition: all 0.18s ease;
-      }
-      .filter:hover {
-        border-color: var(--green);
-        color: var(--green-deep);
-      }
-      .filter.is-active {
-        background: var(--green-deep);
-        color: #f6f1e1;
-        border-color: var(--green-deep);
-        box-shadow: var(--shadow-sm);
-      }
-
-      /* ============ 路线卡片 ============ */
       .grid {
-        display: grid;
-        grid-template-columns: repeat(3, 1fr);
-        gap: 24px;
-      }
-      .card {
-        background: var(--surface);
-        border-radius: var(--radius);
-        overflow: hidden;
-        box-shadow: var(--shadow-sm);
-        border: 1px solid var(--line);
-        transition: transform 0.22s ease, box-shadow 0.22s ease;
-        display: flex;
-        flex-direction: column;
-      }
-      .card:hover {
-        transform: translateY(-6px);
-        box-shadow: var(--shadow-lg);
-      }
-      .card__cover {
-        position: relative;
-        aspect-ratio: 16 / 10;
-        overflow: hidden;
-      }
-      .card__cover svg {
-        width: 100%;
-        height: 100%;
-        display: block;
-      }
-      .card__badge {
-        position: absolute;
-        top: 14px;
-        left: 14px;
-        padding: 5px 10px;
-        font-size: 12px;
-        font-weight: 600;
-        border-radius: 999px;
-        color: #fff;
-        backdrop-filter: blur(4px);
-        background: rgba(0, 0, 0, 0.45);
-      }
-      .badge--ok { background: rgba(79, 138, 74, 0.92); }
-      .badge--info { background: rgba(74, 126, 160, 0.92); }
-      .badge--warn { background: rgba(201, 132, 50, 0.92); }
-      .badge--bad { background: rgba(168, 74, 59, 0.92); }
-
-      .card__body {
-        padding: 20px 20px 22px;
-        display: flex;
-        flex-direction: column;
-        flex: 1;
-      }
-      .card__name {
-        margin: 0 0 4px;
-        font-family: var(--font-serif);
-        font-size: 19px;
-        font-weight: 800;
-        color: var(--green-deep);
-      }
-      .card__region {
-        font-size: 13px;
-        color: var(--muted);
-        margin-bottom: 10px;
-        display: flex;
-        align-items: center;
-        gap: 5px;
-      }
-      .card__highlight {
-        font-size: 14px;
-        color: var(--text);
-        line-height: 1.6;
-        margin: 0 0 14px;
-        flex: 1;
-      }
-      .card__meta {
-        display: flex;
-        flex-wrap: wrap;
-        gap: 6px;
-        margin-bottom: 16px;
-      }
-      .chip {
-        padding: 4px 10px;
-        font-size: 12px;
-        background: var(--bg-soft);
-        border-radius: 999px;
-        color: var(--muted);
-      }
-      .chip--green {
-        background: var(--green-soft);
-        color: var(--green-deep);
-      }
-      .chip--brown {
-        background: var(--brown-soft);
-        color: var(--brown);
-      }
-      .card__btn {
-        align-self: flex-start;
-        background: transparent;
-        color: var(--green-deep);
-        border: 1.5px solid var(--green-deep);
-        padding: 9px 18px;
-        border-radius: 999px;
-        font-size: 13.5px;
-        font-weight: 600;
-        transition: all 0.18s ease;
-      }
-      .card__btn:hover {
-        background: var(--green-deep);
-        color: #f6f1e1;
-      }
-      .card__btn::after {
-        content: " →";
+        grid-template-columns: 1fr;
       }
 
-      .empty {
-        grid-column: 1 / -1;
-        text-align: center;
-        padding: 60px 20px;
-        color: var(--muted);
-        background: var(--surface);
-        border-radius: var(--radius);
-        border: 1px dashed var(--line-strong);
-      }
-
-      /* ============ 安全提示 ============ */
-      .safety {
-        background: linear-gradient(180deg, var(--bg-soft) 0%, var(--bg) 100%);
-      }
       .safety-grid {
-        display: grid;
-        grid-template-columns: repeat(3, 1fr);
-        gap: 18px;
-      }
-      .safety-item {
-        background: var(--surface);
-        border-radius: var(--radius-sm);
-        padding: 22px;
-        border: 1px solid var(--line);
-        display: flex;
-        gap: 14px;
-        align-items: flex-start;
-      }
-      .safety-item__icon {
-        flex: none;
-        width: 42px;
-        height: 42px;
-        border-radius: 12px;
-        background: var(--green-soft);
-        color: var(--green-deep);
-        display: grid;
-        place-items: center;
-        font-size: 20px;
-      }
-      .safety-item__title {
-        font-size: 15px;
-        font-weight: 700;
-        margin: 0 0 4px;
-        color: var(--text);
-      }
-      .safety-item__desc {
-        margin: 0;
-        font-size: 13.5px;
-        color: var(--muted);
-        line-height: 1.6;
+        grid-template-columns: 1fr;
       }
 
-      /* ============ 关于 ============ */
-      .about {
-        background: var(--green-deep);
-        color: #f6f1e1;
-        margin-top: 48px;
-        padding: 70px 0;
-        position: relative;
-        overflow: hidden;
-      }
-      .about::before {
-        content: "";
-        position: absolute;
-        inset: 0;
-        background: radial-gradient(800px 400px at 90% 10%, rgba(255, 255, 255, 0.07), transparent 60%);
-      }
-      .about__inner {
-        max-width: 800px;
-        margin: 0 auto;
-        text-align: center;
-        padding: 0 24px;
-        position: relative;
-      }
-      .about .section__eyebrow { color: #d8c69a; }
-      .about .section__title { color: #f6f1e1; }
-      .about__text {
-        font-size: 16px;
-        color: #e8dec5;
-        line-height: 1.85;
-        max-width: 680px;
-        margin: 0 auto;
+      .toolbar {
+        padding: 12px;
       }
 
-      /* ============ 页脚 ============ */
-      .footer {
-        background: #1f2a23;
-        color: #d8d2bf;
-        padding: 38px 0 28px;
-        font-size: 13.5px;
-      }
-      .footer__inner {
-        max-width: var(--max);
-        margin: 0 auto;
-        padding: 0 24px;
-        display: flex;
-        justify-content: space-between;
-        flex-wrap: wrap;
-        gap: 18px;
-      }
-      .footer__brand {
-        font-family: var(--font-serif);
-        font-size: 18px;
-        color: #f6f1e1;
-        font-weight: 700;
-        letter-spacing: 2px;
-      }
-      .footer__meta {
-        color: #a39c87;
-        font-size: 13px;
-        line-height: 1.8;
-      }
-      .footer__tags {
-        display: flex;
-        gap: 8px;
-        flex-wrap: wrap;
-        margin-top: 6px;
-      }
-      .footer__tag {
-        padding: 3px 10px;
-        background: rgba(255, 255, 255, 0.06);
-        border-radius: 999px;
-        font-size: 12px;
+      .filter-group {
+        border-right: none;
+        padding-right: 0;
+        margin-right: 0;
+        width: 100%;
       }
 
-      /* ============ 弹窗 Modal ============ */
+      .filter-group+.filter-group {
+        padding-top: 8px;
+        border-top: 1px solid var(--line);
+      }
+
       .modal {
-        position: fixed;
-        inset: 0;
-        z-index: 200;
-        display: none;
-        align-items: flex-start;
-        justify-content: center;
-        padding: 32px 16px;
-        overflow-y: auto;
+        padding: 0;
+        align-items: stretch;
       }
-      .modal.is-open {
-        display: flex;
-      }
-      .modal__backdrop {
-        position: fixed;
-        inset: 0;
-        background: rgba(30, 25, 15, 0.6);
-        backdrop-filter: blur(4px);
-      }
+
       .modal__panel {
-        position: relative;
-        background: var(--surface);
-        border-radius: var(--radius);
-        width: 100%;
-        max-width: 880px;
-        box-shadow: var(--shadow-lg);
-        overflow: hidden;
-        animation: pop 0.22s ease;
+        border-radius: 0;
+        max-width: 100%;
+        min-height: 100vh;
       }
-      @keyframes pop {
-        from { opacity: 0; transform: translateY(20px) scale(0.98); }
-        to { opacity: 1; transform: translateY(0) scale(1); }
-      }
-      .modal__close {
-        position: absolute;
-        top: 14px;
-        right: 14px;
-        width: 38px;
-        height: 38px;
-        border-radius: 50%;
-        background: rgba(255, 255, 255, 0.92);
-        border: 1px solid var(--line);
-        font-size: 20px;
-        color: var(--text);
-        display: grid;
-        place-items: center;
-        z-index: 5;
-        transition: all 0.15s ease;
-      }
-      .modal__close:hover {
-        background: #fff;
-        transform: rotate(90deg);
-      }
+
       .modal__cover {
-        aspect-ratio: 21 / 9;
-        position: relative;
-        overflow: hidden;
+        aspect-ratio: 16 / 10;
       }
-      .modal__cover svg {
-        width: 100%;
-        height: 100%;
-      }
-      .modal__cover-overlay {
-        position: absolute;
-        inset: auto 0 0 0;
-        padding: 28px;
-        background: linear-gradient(180deg, transparent 0%, rgba(0, 0, 0, 0.55) 100%);
-        color: #fff;
-      }
-      .modal__cover-overlay h3 {
-        margin: 0 0 6px;
-        font-family: var(--font-serif);
-        font-size: 28px;
-        letter-spacing: 1px;
-      }
-      .modal__cover-overlay p {
-        margin: 0;
-        font-size: 13.5px;
-        opacity: 0.9;
-      }
+
       .modal__content {
-        padding: 28px 28px 32px;
-        max-height: 60vh;
-        overflow-y: auto;
+        padding: 22px 18px 30px;
+        max-height: none;
       }
+
       .modal__quick {
-        display: grid;
-        grid-template-columns: repeat(4, 1fr);
-        gap: 14px;
-        padding: 18px;
-        background: var(--bg-soft);
-        border-radius: var(--radius-sm);
-        margin-bottom: 24px;
+        grid-template-columns: repeat(2, 1fr);
       }
-      .quick__item {
-        text-align: center;
+
+      .quick__item:nth-child(2) {
+        border-right: none;
       }
-      .quick__label {
-        font-size: 12px;
-        color: var(--muted);
-        margin-bottom: 4px;
-      }
-      .quick__value {
-        font-size: 14.5px;
-        font-weight: 700;
-        color: var(--green-deep);
-      }
-      .modal__section {
-        margin-bottom: 22px;
-      }
-      .modal__section-title {
-        display: flex;
-        align-items: center;
-        gap: 8px;
-        font-size: 16px;
-        font-weight: 700;
-        color: var(--green-deep);
-        margin: 0 0 10px;
-        padding-bottom: 8px;
+
+      .quick__item:nth-child(1),
+      .quick__item:nth-child(2) {
         border-bottom: 1px solid var(--line);
       }
-      .modal__section-icon {
-        width: 24px;
-        height: 24px;
-        border-radius: 6px;
-        background: var(--green-soft);
-        display: grid;
-        place-items: center;
-        font-size: 13px;
-      }
-      .modal__section p,
-      .modal__section li {
-        color: var(--text);
-        line-height: 1.75;
-        font-size: 14.5px;
-      }
-      .modal__section ul {
-        margin: 0;
-        padding-left: 22px;
-      }
-      .modal__section li {
-        margin-bottom: 6px;
-        color: var(--muted);
-      }
-      .modal__highlights {
-        display: flex;
-        flex-wrap: wrap;
-        gap: 8px;
-        margin-bottom: 4px;
-      }
-      .highlight-pill {
-        background: var(--brown-soft);
-        color: var(--brown);
-        padding: 5px 12px;
-        border-radius: 999px;
-        font-size: 13px;
-        font-weight: 500;
-      }
-      body.no-scroll {
-        overflow: hidden;
+
+      .modal__cover-overlay {
+        padding: 20px;
       }
 
-      /* ============ 响应式 ============ */
-      @media (max-width: 960px) {
-        .hero__inner {
-          grid-template-columns: 1fr;
-          padding: 56px 24px 64px;
-        }
-        .hero__art {
-          max-width: 360px;
-          justify-self: center;
-        }
-        .hero__title { font-size: 36px; }
-        .grid { grid-template-columns: repeat(2, 1fr); }
-        .safety-grid { grid-template-columns: repeat(2, 1fr); }
-        .modal__quick { grid-template-columns: repeat(2, 1fr); }
-        .section { padding: 60px 0 28px; }
+      .about__features {
+        grid-template-columns: 1fr;
       }
-      @media (max-width: 600px) {
-        .nav__links { display: none; }
-        .nav__links.is-open {
-          display: flex;
-          position: absolute;
-          top: 100%;
-          left: 0;
-          right: 0;
-          background: var(--bg);
-          flex-direction: column;
-          padding: 12px 24px;
-          border-bottom: 1px solid var(--line);
-          gap: 2px;
-        }
-        .nav__toggle { display: inline-flex; }
-        .hero__title { font-size: 30px; }
-        .hero__inner { padding: 44px 20px 56px; }
-        .container { padding: 0 16px; }
-        .grid { grid-template-columns: 1fr; }
-        .safety-grid { grid-template-columns: 1fr; }
-        .section__title { font-size: 26px; }
-        .modal__content { padding: 22px 18px 26px; }
-        .modal__cover-overlay { padding: 18px; }
-        .modal__cover-overlay h3 { font-size: 22px; }
-      }
-    </style>
-  </head>
-  <body>
-    <!-- ============ 顶部导航 ============ -->
-    <header class="nav">
-      <div class="nav__inner">
-        <div class="brand">
-          <div class="brand__logo" aria-hidden="true">⛰</div>
-          <div>
-            <div class="brand__title">山野路书</div>
-            <div class="brand__sub">发现中国经典徒步路线</div>
-          </div>
-        </div>
-        <button class="nav__toggle" aria-label="菜单">☰</button>
-        <nav class="nav__links">
-          <a class="nav__link" href="#home">首页</a>
-          <a class="nav__link" href="#routes">热门路线</a>
-          <a class="nav__link" href="#routes">路线攻略</a>
-          <a class="nav__link" href="#safety">安全提示</a>
-          <a class="nav__link" href="#about">关于项目</a>
-        </nav>
-      </div>
-    </header>
 
-    <!-- ============ 首屏 Hero ============ -->
-    <section class="hero" id="home">
-      <div class="hero__inner">
+      .footer__inner {
+        flex-direction: column;
+      }
+    }
+  </style>
+</head>
+
+<body>
+  <!-- ============ 顶部导航 ============ -->
+  <header class="nav">
+    <div class="nav__inner">
+      <div class="brand">
+        <div class="brand__logo" aria-hidden="true">⛰</div>
         <div>
-          <span class="hero__eyebrow">🌿 国内徒步图鉴 · Demo</span>
-          <h1 class="hero__title">
-            用一张路书<br />找到适合你的<em>中国徒步路线</em>
-          </h1>
-          <p class="hero__desc">
-            汇集国内经典徒步路线，整合风景图片、路线难度、最佳季节、行程攻略和安全提示，帮助你更轻松地规划下一次山野之旅。
-          </p>
-          <button class="hero__cta" id="exploreBtn">
-            开始探索路线
-            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12h14M13 5l7 7-7 7"/></svg>
-          </button>
-          <div class="hero__stats">
-            <div class="hero__stat">
-              <strong>8+</strong><span>经典徒步路线</span>
-            </div>
-            <div class="hero__stat">
-              <strong>4</strong><span>难度等级</span>
-            </div>
-            <div class="hero__stat">
-              <strong>全年</strong><span>季节推荐</span>
-            </div>
-          </div>
+          <div class="brand__title">山野路书</div>
+          <div class="brand__sub">TRAIL ATLAS · 国内徒步图鉴</div>
         </div>
-        <div class="hero__art" aria-hidden="true">
-          <svg viewBox="0 0 480 480" xmlns="http://www.w3.org/2000/svg">
-            <defs>
-              <linearGradient id="sky" x1="0" y1="0" x2="0" y2="1">
-                <stop offset="0" stop-color="#dde8d6"/>
-                <stop offset="1" stop-color="#f7f3ea"/>
-              </linearGradient>
-              <linearGradient id="m1" x1="0" y1="0" x2="0" y2="1">
-                <stop offset="0" stop-color="#5a7e62"/>
-                <stop offset="1" stop-color="#3f6f4a"/>
-              </linearGradient>
-              <linearGradient id="m2" x1="0" y1="0" x2="0" y2="1">
-                <stop offset="0" stop-color="#7d9b80"/>
-                <stop offset="1" stop-color="#4f7556"/>
-              </linearGradient>
-              <linearGradient id="m3" x1="0" y1="0" x2="0" y2="1">
-                <stop offset="0" stop-color="#a4ad88"/>
-                <stop offset="1" stop-color="#6f8a6a"/>
-              </linearGradient>
-            </defs>
-            <circle cx="240" cy="240" r="220" fill="url(#sky)"/>
-            <circle cx="350" cy="140" r="36" fill="#f3e9d0" opacity="0.85"/>
-            <path d="M40,360 L100,260 L160,320 L220,200 L290,310 L360,230 L440,360 Z" fill="url(#m3)" opacity="0.85"/>
-            <path d="M40,380 L130,240 L190,310 L260,180 L330,300 L400,230 L460,380 Z" fill="url(#m2)"/>
-            <path d="M30,400 L120,280 L200,360 L280,250 L370,360 L460,300 L460,420 L30,420 Z" fill="url(#m1)"/>
-            <path d="M260,180 L240,210 L260,210 Z" fill="#f6f1e1"/>
-            <path d="M220,200 L208,222 L232,222 Z" fill="#f6f1e1" opacity="0.9"/>
-            <g opacity="0.55">
-              <path d="M70,140 q40,-12 80,0" stroke="#fff" stroke-width="3" fill="none" stroke-linecap="round"/>
-              <path d="M280,90 q50,-14 100,0" stroke="#fff" stroke-width="3" fill="none" stroke-linecap="round"/>
-            </g>
-            <g stroke="#8a6a3c" stroke-width="2.5" stroke-dasharray="4 6" fill="none" stroke-linecap="round" opacity="0.85">
-              <path d="M60,400 Q160,330 220,360 T380,300"/>
-            </g>
-            <circle cx="60" cy="400" r="5" fill="#8a6a3c"/>
-            <circle cx="380" cy="300" r="6" fill="#a84a3b"/>
+      </div>
+      <button class="nav__toggle" aria-label="菜单" id="navToggle">☰</button>
+      <nav class="nav__links" id="navLinks">
+        <a class="nav__link" href="#home">首页</a>
+        <a class="nav__link" href="#routes">热门路线</a>
+        <a class="nav__link" href="#routes">路线攻略</a>
+        <a class="nav__link" href="#safety">安全提示</a>
+        <a class="nav__link" href="#about">关于项目</a>
+      </nav>
+    </div>
+  </header>
+
+  <!-- ============ 首屏 Hero ============ -->
+  <section class="hero" id="home">
+    <div class="hero__bg" aria-hidden="true"></div>
+    <div class="hero__inner">
+      <span class="hero__eyebrow">🌿 50+ 国内经典徒步路线 · 一站规划</span>
+      <h1 class="hero__title">
+        用一张路书<br />找到适合你的<em>中国山野</em>
+      </h1>
+      <p class="hero__desc">
+        从武功山的高山草甸到冈仁波齐的转山之路，从虎跳峡的峡谷江景到喀纳斯的图瓦村落 ——
+        山野路书把每条路线的图片、难度、季节、行程、装备与安全提示，整理在一张卡片里。
+      </p>
+      <div class="hero__actions">
+        <button class="hero__cta" id="exploreBtn">
+          开始探索路线
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round"
+            stroke-linejoin="round">
+            <path d="M5 12h14M13 5l7 7-7 7" />
           </svg>
-        </div>
+        </button>
+        <a class="hero__cta-secondary" href="#safety">
+          <svg viewBox="0 0 24 24" width="16" height="16" fill="none" stroke="currentColor" stroke-width="2"
+            stroke-linecap="round" stroke-linejoin="round">
+            <path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z" />
+          </svg>
+          查看安全提示
+        </a>
       </div>
-    </section>
-
-    <!-- ============ 路线列表 ============ -->
-    <section class="section" id="routes">
-      <div class="container">
-        <div class="section__head">
-          <div class="section__eyebrow">FEATURED ROUTES</div>
-          <h2 class="section__title">热门路线 · 一图选线</h2>
-          <p class="section__desc">从入门草甸到高海拔无人区，按难度筛选，找到适合你的山野之路。</p>
+      <div class="hero__stats">
+        <div class="hero__stat">
+          <strong>50+</strong><span>经典徒步路线</span>
         </div>
-
-        <div class="filters" id="filters" role="tablist">
-          <button class="filter is-active" data-level="all">全部</button>
-          <button class="filter" data-level="入门">入门</button>
-          <button class="filter" data-level="进阶">进阶</button>
-          <button class="filter" data-level="高阶">高阶</button>
-          <button class="filter" data-level="挑战">挑战</button>
+        <div class="hero__stat">
+          <strong>4</strong><span>难度等级</span>
         </div>
-
-        <div class="grid" id="routeGrid"></div>
-      </div>
-    </section>
-
-    <!-- ============ 安全提示 ============ -->
-    <section class="section safety" id="safety">
-      <div class="container">
-        <div class="section__head">
-          <div class="section__eyebrow">SAFETY FIRST</div>
-          <h2 class="section__title">徒步安全提示</h2>
-          <p class="section__desc">山野的浪漫离不开稳妥的准备。出行前请确认以下要点：</p>
+        <div class="hero__stat">
+          <strong>20+</strong><span>覆盖省份</span>
         </div>
-        <div class="safety-grid">
-          <div class="safety-item">
-            <div class="safety-item__icon">🌦️</div>
-            <div>
-              <h3 class="safety-item__title">出发前查询天气</h3>
-              <p class="safety-item__desc">关注路线沿线 3 天天气预报，雷雨、暴雪、大风需果断改期。</p>
-            </div>
-          </div>
-          <div class="safety-item">
-            <div class="safety-item__icon">📊</div>
-            <div>
-              <h3 class="safety-item__title">评估自身能力</h3>
-              <p class="safety-item__desc">根据徒步经验、心肺与膝盖状态选择难度，避免盲目挑战高阶/挑战路线。</p>
-            </div>
-          </div>
-          <div class="safety-item">
-            <div class="safety-item__icon">🎒</div>
-            <div>
-              <h3 class="safety-item__title">准备补给与应急</h3>
-              <p class="safety-item__desc">充足水源、能量食品、保温层、头灯、雨具与基础医药包必不可少。</p>
-            </div>
-          </div>
-          <div class="safety-item">
-            <div class="safety-item__icon">👥</div>
-            <div>
-              <h3 class="safety-item__title">尽量结伴出行</h3>
-              <p class="safety-item__desc">至少两人同行，向亲友报备路线与下撤时间，配备离线地图与卫星通讯。</p>
-            </div>
-          </div>
-          <div class="safety-item">
-            <div class="safety-item__icon">♻️</div>
-            <div>
-              <h3 class="safety-item__title">无痕山野</h3>
-              <p class="safety-item__desc">所有垃圾带走，不踩踏脆弱植被，遵守 Leave No Trace 原则。</p>
-            </div>
-          </div>
-          <div class="safety-item">
-            <div class="safety-item__icon">🛡️</div>
-            <div>
-              <h3 class="safety-item__title">尊重当地规则</h3>
-              <p class="safety-item__desc">遵守景区与保护区规定，必要时办理通行证、保险、向当地报备。</p>
-            </div>
-          </div>
+        <div class="hero__stat">
+          <strong>全年</strong><span>季节推荐</span>
         </div>
-      </div>
-    </section>
-
-    <!-- ============ 关于 ============ -->
-    <section class="about" id="about">
-      <div class="about__inner">
-        <div class="section__eyebrow">ABOUT THIS DEMO</div>
-        <h2 class="section__title">关于「山野路书」</h2>
-        <p class="about__text">
-          「山野路书」希望解决徒步路线信息分散、攻略质量参差不齐、新手难以判断路线难度的问题。<br />
-          通过图文卡片、路线筛选和攻略详情，让用户更直观地了解国内经典徒步路线，降低出行前的信息整理成本。<br />
-          这是为 <strong>TRAE&nbsp;AI 创造力大赛</strong>（生活娱乐赛道）打造的初赛 Demo，仅用于创意展示。
-        </p>
-      </div>
-    </section>
-
-    <!-- ============ 页脚 ============ -->
-    <footer class="footer">
-      <div class="footer__inner">
-        <div>
-          <div class="footer__brand">山野路书 · TRAIL ATLAS</div>
-          <div class="footer__meta">
-            出行前请以当地官方公告、天气预报与可靠向导信息为准。<br />
-            © <span id="year"></span> 山野路书 · 仅用于创意展示
-          </div>
-        </div>
-        <div>
-          <div class="footer__tags">
-            <span class="footer__tag">TRAE&nbsp;AI 创造力大赛</span>
-            <span class="footer__tag">生活娱乐赛道</span>
-            <span class="footer__tag">Demo 展示</span>
-          </div>
-        </div>
-      </div>
-    </footer>
-
-    <!-- ============ 路线详情弹窗 ============ -->
-    <div class="modal" id="routeModal" aria-hidden="true" role="dialog">
-      <div class="modal__backdrop" data-close></div>
-      <div class="modal__panel" role="document">
-        <button class="modal__close" data-close aria-label="关闭">×</button>
-        <div class="modal__cover" id="modalCover"></div>
-        <div class="modal__content" id="modalContent"></div>
       </div>
     </div>
+    <div class="hero__scroll">SCROLL ↓</div>
+  </section>
 
-    <script>
-      // ================= 路线数据 =================
-      // 8 条国内经典徒步路线
-      const ROUTES = [
-        {
-          id: "wugongshan",
-          name: "武功山徒步",
-          region: "江西 · 萍乡",
-          level: "入门",
-          season: "5–10 月",
-          days: "1–2 天",
-          highlight: "10 万亩高山草甸 · 云海日出",
-          summary:
-            "武功山以无垠的高山草甸和壮阔云海闻名，路线成熟、补给方便，是入门多日徒步的经典之选。",
-          plan: [
-            "Day 1：沈子村或发云界进山，沿草甸线前往金顶附近营地，傍晚拍摄云海日落。",
-            "Day 2：清晨观日出，午后沿石鼓寺方向下撤至龙山村出山。"
-          ],
-          gear: [
-            "防滑徒步鞋 / 越野鞋",
-            "保温层（抓绒 + 轻薄羽绒）",
-            "防晒帽、墨镜与防晒霜",
-            "雨衣或冲锋衣（山顶天气多变）",
-            "登山杖与护膝（长下坡）"
-          ],
-          safety: [
-            "草甸雾大时能见度低，请勿离开主路拍照。",
-            "山顶风大易失温，注意保暖与体力分配。",
-            "雷雨天气远离山脊高点与孤立树木。"
-          ],
-          colors: ["#7fb069", "#3f6f4a"]
-        },
-        {
-          id: "yubeng",
-          name: "雨崩徒步",
-          region: "云南 · 迪庆德钦",
-          level: "进阶",
-          season: "10–11 月 / 3–5 月",
-          days: "3–5 天",
-          highlight: "梅里雪山脚下 · 神瀑冰湖",
-          summary:
-            "在梅里雪山脚下穿行藏族村寨与神瀑、冰湖，风景密度极高，是进入高海拔多日徒步的入门路线。",
-          plan: [
-            "Day 1：飞来寺 → 西当温泉 → 翻越南宗垭口至雨崩村。",
-            "Day 2：雨崩村 → 神瀑往返，适应海拔。",
-            "Day 3：选择冰湖（强度大）或尼农峡谷（下撤长）出山。"
-          ],
-          gear: [
-            "登山杖（高海拔上下坡）",
-            "冲锋衣裤 + 抓绒 + 轻羽绒",
-            "头灯 + 备用电池",
-            "高热量行动粮（巧克力 / 能量胶）",
-            "基础药品：布洛芬、止泻、创可贴"
-          ],
-          safety: [
-            "海拔超过 3000 m，注意高反症状，必要时下撤。",
-            "冰湖路段碎石与冰雪，防滑装备必备。",
-            "尼农峡谷部分路段临崖，雨天慎行。"
-          ],
-          colors: ["#6b8fa3", "#3a5a78"]
-        },
-        {
-          id: "tigerleaping",
-          name: "虎跳峡高路徒步",
-          region: "云南 · 丽江/香格里拉",
-          level: "入门",
-          season: "10 月–次年 4 月",
-          days: "2–3 天",
-          highlight: "金沙江峡谷 · 28 道拐",
-          summary:
-            "沿玉龙雪山与哈巴雪山间的峡谷山腰行走，俯瞰金沙江激流。客栈成熟、路况清晰，体验感非常均衡。",
-          plan: [
-            "Day 1：桥头镇 → 纳西雅阁 → 经 28 道拐至茶马客栈。",
-            "Day 2：茶马客栈 → 半路客栈 → 中虎跳（可选下到江边）。",
-            "Day 3：核桃园 → Tina's 出山，搭车返回丽江/香格里拉。"
-          ],
-          gear: [
-            "防滑徒步鞋",
-            "20–30L 轻量背包",
-            "防晒装备（帽子、袖套、墨镜）",
-            "登山杖（台阶下撤）",
-            "1L 以上水具"
-          ],
-          safety: [
-            "峡谷正午暴晒，注意防晒与补水。",
-            "中虎跳台阶湿滑，请勿在崖边拍照。",
-            "雨季易有落石，及时关注沿线公告。"
-          ],
-          colors: ["#d4a55a", "#a06a2c"]
-        },
-        {
-          id: "kailash",
-          name: "冈仁波齐转山",
-          region: "西藏 · 阿里普兰",
-          level: "挑战",
-          season: "5–10 月",
-          days: "3 天",
-          highlight: "世界级神山 · 信仰之路",
-          summary:
-            "藏传佛教与印度教共同的圣山，转山一圈约 52 公里，海拔最高 5630m 的卓玛拉垭口是核心考验。",
-          plan: [
-            "Day 1：塔钦 → 止热寺，约 20km，缓上为主。",
-            "Day 2：止热寺 → 卓玛拉垭口 → 尊最普寺/塔钦，约 22km，最关键一天。",
-            "Day 3：机动 / 缓冲日，应对天气与身体状况。"
-          ],
-          gear: [
-            "羽绒服 + 保暖内衣 + 厚手套",
-            "登山杖与防风外壳",
-            "高热量食物：坚果、能量胶",
-            "头灯与备用电池",
-            "应急氧气瓶（视个人情况）"
-          ],
-          safety: [
-            "海拔极高，提前在拉萨/阿里地区适应数天。",
-            "急性高反（剧烈头痛 / 呕吐）应立即下撤求助。",
-            "卓玛拉垭口风大低温，谨防失温与冻伤。",
-            "请尊重当地宗教与自然，禁止逆时针转山与丢弃垃圾。"
-          ],
-          colors: ["#6b7a9c", "#2c3e57"]
-        },
-        {
-          id: "luoke",
-          name: "洛克线",
-          region: "四川 · 甘孜稻城",
-          level: "挑战",
-          season: "9–10 月",
-          days: "6–8 天",
-          highlight: "央迈勇 · 仙乃日 · 夏诺多吉三神山",
-          summary:
-            "重走探险家洛克 1928 年路线，环穿稻城亚丁三神山。海拔高、补给少、垭口多，是高海拔无人区长线代表。",
-          plan: [
-            "Day 1：成都 / 稻城集结，确认装备与撤离方案。",
-            "Day 2–3：嘟嘟卡牧场进山，翻越第一垭口至牛奶河营地。",
-            "Day 4–6：穿越蛇湖、新果牛场、地狱谷等核心段。",
-            "Day 7–8：出亚丁景区，返程稻城。"
-          ],
-          gear: [
-            "0℃ 以下睡袋 + 帐篷 + 防潮垫",
-            "离线地图 / 卫星通讯设备",
-            "炉头燃料与多日口粮",
-            "急救包（止血、固定、抗过敏）",
-            "冲锋衣裤 + 抓绒 + 羽绒"
-          ],
-          safety: [
-            "新手不建议作为第一条多日长线，建议跟成熟队伍。",
-            "雷雨 / 降雪显著提高垭口风险，必要时原路撤回。",
-            "建立每日打卡机制与应急呼叫，结伴行动不掉队。"
-          ],
-          colors: ["#5e8978", "#2c4a3f"]
-        },
-        {
-          id: "changchuanbi",
-          name: "长穿毕",
-          region: "四川 · 阿坝四姑娘山",
-          level: "高阶",
-          season: "10–11 月 / 4–6 月",
-          days: "3–4 天",
-          highlight: "长坪沟–穿越–毕棚沟",
-          summary:
-            "经典川西穿越线路，从四姑娘山长坪沟翻垭口至理县毕棚沟，雪山、海子与高山草甸轮番登场。",
-          plan: [
-            "Day 1：日隆镇 → 长坪沟进山 → 木骡子营地。",
-            "Day 2：木骡子 → 翻越垭口 → 毕棚沟方向营地（强度最大一天）。",
-            "Day 3：营地下撤至毕棚沟出山。"
-          ],
-          gear: [
-            "露营装备（视行程选择）",
-            "防风冲锋衣 + 保暖层",
-            "登山杖与护膝",
-            "离线导航 + 充电宝",
-            "全部垃圾打包带走"
-          ],
-          safety: [
-            "穿越线需办理景区相关手续，旺季提前咨询。",
-            "垭口天气恶劣应果断调整计划或原路返回。",
-            "下撤路长，膝盖与脚趾保护是关键。"
-          ],
-          colors: ["#9aaab2", "#4a5c66"]
-        },
-        {
-          id: "dafeng",
-          name: "四姑娘山大峰",
-          region: "四川 · 阿坝四姑娘山",
-          level: "高阶",
-          season: "4–10 月",
-          days: "2–3 天",
-          highlight: "海拔 5025m · 入门级雪山",
-          summary:
-            "海拔 5025 米的大峰被誉为最容易入门的雪山之一，无需技术装备，但仍需扎实体能与海拔适应。",
-          plan: [
-            "Day 1：日隆镇集合并完成体能与高反评估，前往大峰登山大本营（约 4300m）。",
-            "Day 2：凌晨出发冲顶，中午前下撤至大本营，下午回日隆。"
-          ],
-          gear: [
-            "高山靴 + 雪套",
-            "羽绒服 + 防风层 + 保暖手套",
-            "登山杖 + 头灯",
-            "雪镜（防雪盲）",
-            "保温水壶 + 高热量食物"
-          ],
-          safety: [
-            "需办理登山证，建议跟随当地向导。",
-            "凌晨冲顶寒冷且风大，避免单独行动。",
-            "出现严重高反（嘴唇紫绀、意识模糊）必须立即下撤。"
-          ],
-          colors: ["#b8c9d6", "#5a7891"]
-        },
-        {
-          id: "kanas",
-          name: "喀纳斯徒步",
-          region: "新疆 · 阿勒泰",
-          level: "进阶",
-          season: "6–10 月",
-          days: "3–5 天",
-          highlight: "禾木 · 黑湖 · 喀纳斯湖",
-          summary:
-            "横穿阿尔泰山脉，林海、雪峰、河谷与图瓦人村落交替出现，是国内难得的「小瑞士」风格徒步。",
-          plan: [
-            "Day 1：贾登峪 / 禾木集结，沿喀纳斯河进山至小黑湖营地。",
-            "Day 2：小黑湖 → 大黑湖 → 河谷营地，沿途欣赏高山牧场。",
-            "Day 3：穿越针叶林下撤至禾木村，体验图瓦人风情。"
-          ],
-          gear: [
-            "防水徒步鞋（多溪流穿越）",
-            "防蚊驱虫装备",
-            "保温层 + 雨具",
-            "60L 多日背包",
-            "防熊提示哨子"
-          ],
-          safety: [
-            "夏秋温差大，夜间可至 0℃ 左右，保温要充足。",
-            "部分区域信号微弱，离线地图必备。",
-            "尊重图瓦人与哈萨克族牧民习俗，不擅入营地。"
-          ],
-          colors: ["#a8c08a", "#4f7553"]
-        }
-      ];
+  <!-- ============ 路线列表 ============ -->
+  <section class="section" id="routes">
+    <div class="container">
+      <div class="section__head">
+        <div class="section__eyebrow">FEATURED ROUTES</div>
+        <h2 class="section__title">热门路线 · 一图选线</h2>
+        <p class="section__desc">从入门草甸到高海拔无人区，按难度、地区与季节筛选，找到适合你的山野之路。</p>
+      </div>
 
-      // 难度对应颜色样式
-      const LEVEL_STYLE = {
-        入门: { badge: "badge--ok", chip: "chip--green" },
-        进阶: { badge: "badge--info", chip: "chip" },
-        高阶: { badge: "badge--warn", chip: "chip--brown" },
-        挑战: { badge: "badge--bad", chip: "chip" }
-      };
-
-      // ================= 工具：生成 SVG 封面 =================
-      // 使用渐变 + 山形剪影绘制每条路线的占位封面，确保离线可用
-      function makeCover(route, opts = {}) {
-        const [c1, c2] = route.colors;
-        const w = opts.w || 1200;
-        const h = opts.h || 750;
-        const id = "cv-" + route.id + (opts.suffix || "");
-        return `
-          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 ${w} ${h}" preserveAspectRatio="xMidYMid slice">
-            <defs>
-              <linearGradient id="${id}-sky" x1="0" y1="0" x2="0" y2="1">
-                <stop offset="0" stop-color="${c1}" stop-opacity="0.95"/>
-                <stop offset="1" stop-color="${c2}" stop-opacity="1"/>
-              </linearGradient>
-              <linearGradient id="${id}-m" x1="0" y1="0" x2="0" y2="1">
-                <stop offset="0" stop-color="rgba(0,0,0,0.05)"/>
-                <stop offset="1" stop-color="rgba(0,0,0,0.45)"/>
-              </linearGradient>
-            </defs>
-            <rect width="${w}" height="${h}" fill="url(#${id}-sky)"/>
-            <circle cx="${w * 0.78}" cy="${h * 0.25}" r="${h * 0.1}" fill="rgba(255,255,255,0.18)"/>
-            <circle cx="${w * 0.85}" cy="${h * 0.22}" r="${h * 0.04}" fill="rgba(255,255,255,0.32)"/>
-            <path d="M0,${h * 0.7} L${w * 0.18},${h * 0.45} L${w * 0.32},${h * 0.55} L${w * 0.5},${h * 0.35} L${w * 0.68},${h * 0.5} L${w * 0.82},${h * 0.4} L${w},${h * 0.6} L${w},${h} L0,${h} Z" fill="rgba(255,255,255,0.18)"/>
-            <path d="M0,${h * 0.78} L${w * 0.15},${h * 0.55} L${w * 0.3},${h * 0.65} L${w * 0.48},${h * 0.45} L${w * 0.62},${h * 0.6} L${w * 0.8},${h * 0.5} L${w},${h * 0.7} L${w},${h} L0,${h} Z" fill="rgba(0,0,0,0.22)"/>
-            <path d="M0,${h * 0.85} L${w * 0.2},${h * 0.7} L${w * 0.42},${h * 0.78} L${w * 0.6},${h * 0.65} L${w * 0.78},${h * 0.75} L${w},${h * 0.8} L${w},${h} L0,${h} Z" fill="url(#${id}-m)"/>
-            <path d="M${w * 0.5},${h * 0.35} L${w * 0.46},${h * 0.42} L${w * 0.54},${h * 0.42} Z" fill="rgba(255,255,255,0.85)"/>
-            <path d="M${w * 0.18},${h * 0.45} L${w * 0.15},${h * 0.5} L${w * 0.21},${h * 0.5} Z" fill="rgba(255,255,255,0.7)"/>
-          </svg>
-        `;
-      }
-
-      // ================= 渲染卡片 =================
-      const grid = document.getElementById("routeGrid");
-
-      function renderCards(level = "all") {
-        const list = level === "all" ? ROUTES : ROUTES.filter(r => r.level === level);
-        if (list.length === 0) {
-          grid.innerHTML = '<div class="empty">暂无该难度的路线，请切换其他筛选。</div>';
-          return;
-        }
-        grid.innerHTML = list
-          .map(r => {
-            const style = LEVEL_STYLE[r.level];
-            return `
-              <article class="card" data-id="${r.id}">
-                <div class="card__cover">
-                  ${makeCover(r)}
-                  <span class="card__badge ${style.badge}">${r.level}</span>
-                </div>
-                <div class="card__body">
-                  <h3 class="card__name">${r.name}</h3>
-                  <div class="card__region">📍 ${r.region}</div>
-                  <p class="card__highlight">${r.highlight}</p>
-                  <div class="card__meta">
-                    <span class="chip ${style.chip}">${r.season}</span>
-                    <span class="chip">建议 ${r.days}</span>
-                  </div>
-                  <button class="card__btn" data-view="${r.id}">查看攻略</button>
-                </div>
-              </article>
-            `;
-          })
-          .join("");
-      }
-
-      renderCards();
-
-      // ================= 筛选 =================
-      const filters = document.getElementById("filters");
-      filters.addEventListener("click", e => {
-        const btn = e.target.closest(".filter");
-        if (!btn) return;
-        filters.querySelectorAll(".filter").forEach(f => f.classList.remove("is-active"));
-        btn.classList.add("is-active");
-        renderCards(btn.dataset.level);
-      });
-
-      // ================= Hero CTA：平滑滚动 =================
-      document.getElementById("exploreBtn").addEventListener("click", () => {
-        document.getElementById("routes").scrollIntoView({ behavior: "smooth" });
-      });
-
-      // ================= 移动端菜单 =================
-      const navToggle = document.querySelector(".nav__toggle");
-      const navLinks = document.querySelector(".nav__links");
-      navToggle.addEventListener("click", () => navLinks.classList.toggle("is-open"));
-      navLinks.addEventListener("click", e => {
-        if (e.target.matches(".nav__link")) navLinks.classList.remove("is-open");
-      });
-
-      // ================= 路线详情弹窗 =================
-      const modal = document.getElementById("routeModal");
-      const modalCover = document.getElementById("modalCover");
-      const modalContent = document.getElementById("modalContent");
-
-      function openModal(id) {
-        const r = ROUTES.find(x => x.id === id);
-        if (!r) return;
-        modalCover.innerHTML = `
-          ${makeCover(r, { suffix: "-m" })}
-          <div class="modal__cover-overlay">
-            <h3>${r.name}</h3>
-            <p>📍 ${r.region} · ${r.highlight}</p>
+      <div class="toolbar">
+        <div class="toolbar__row">
+          <div class="search">
+            <span class="search__icon">
+              <svg viewBox="0 0 24 24" width="18" height="18" fill="none" stroke="currentColor" stroke-width="2"
+                stroke-linecap="round" stroke-linejoin="round">
+                <circle cx="11" cy="11" r="8" />
+                <path d="m21 21-4.3-4.3" />
+              </svg>
+            </span>
+            <input id="searchInput" type="text" class="search__input" placeholder="搜索路线名称、地区、关键词……" />
           </div>
-        `;
-        modalContent.innerHTML = `
+          <div class="toolbar__count">共 <strong id="countNum">0</strong> 条路线</div>
+        </div>
+        <div class="filters" id="filters">
+          <div class="filter-group" data-group="level">
+            <span class="filter-group__label">难度</span>
+            <button class="filter is-active" data-level="all">全部</button>
+            <button class="filter" data-level="入门">入门</button>
+            <button class="filter" data-level="进阶">进阶</button>
+            <button class="filter" data-level="高阶">高阶</button>
+            <button class="filter" data-level="挑战">挑战</button>
+          </div>
+          <div class="filter-group" data-group="region">
+            <span class="filter-group__label">地区</span>
+            <button class="filter is-active" data-region="all">全部</button>
+            <button class="filter" data-region="川西">川西</button>
+            <button class="filter" data-region="云南">云南</button>
+            <button class="filter" data-region="西藏">西藏</button>
+            <button class="filter" data-region="新疆">新疆</button>
+            <button class="filter" data-region="青甘">青甘</button>
+            <button class="filter" data-region="华东">华东</button>
+            <button class="filter" data-region="华北">华北</button>
+            <button class="filter" data-region="华南">华南</button>
+          </div>
+        </div>
+      </div>
+
+      <div class="grid" id="routeGrid"></div>
+      <div class="more-wrap" id="moreWrap" style="display:none">
+        <button class="more-btn" id="moreBtn">加载更多路线</button>
+      </div>
+    </div>
+  </section>
+
+  <!-- ============ 安全提示 ============ -->
+  <section class="section safety" id="safety">
+    <div class="container">
+      <div class="section__head">
+        <div class="section__eyebrow">SAFETY FIRST</div>
+        <h2 class="section__title">徒步安全提示</h2>
+        <p class="section__desc">山野的浪漫离不开稳妥的准备。出发前请逐项确认：</p>
+      </div>
+      <div class="safety-grid">
+        <div class="safety-item">
+          <div class="safety-item__icon">🌦️</div>
+          <div>
+            <h3 class="safety-item__title">出发前查询天气</h3>
+            <p class="safety-item__desc">关注沿线 3 天天气，雷雨、暴雪、大风需果断改期或调整行程。</p>
+          </div>
+        </div>
+        <div class="safety-item">
+          <div class="safety-item__icon">📊</div>
+          <div>
+            <h3 class="safety-item__title">评估自身能力</h3>
+            <p class="safety-item__desc">参考自己的徒步经验、心肺与膝盖状态，避免盲目挑战高阶/挑战级路线。</p>
+          </div>
+        </div>
+        <div class="safety-item">
+          <div class="safety-item__icon">🎒</div>
+          <div>
+            <h3 class="safety-item__title">准备补给与应急</h3>
+            <p class="safety-item__desc">充足水源、能量食品、保温层、头灯、雨具与基础医药包必不可少。</p>
+          </div>
+        </div>
+        <div class="safety-item">
+          <div class="safety-item__icon">👥</div>
+          <div>
+            <h3 class="safety-item__title">尽量结伴出行</h3>
+            <p class="safety-item__desc">至少两人同行，向亲友报备路线与下撤时间，有条件携卫星通讯。</p>
+          </div>
+        </div>
+        <div class="safety-item">
+          <div class="safety-item__icon">♻️</div>
+          <div>
+            <h3 class="safety-item__title">无痕山野</h3>
+            <p class="safety-item__desc">所有垃圾带走，不踩踏脆弱植被，遵守 Leave No Trace 七原则。</p>
+          </div>
+        </div>
+        <div class="safety-item">
+          <div class="safety-item__icon">🛡️</div>
+          <div>
+            <h3 class="safety-item__title">尊重当地规则</h3>
+            <p class="safety-item__desc">遵守景区与保护区规定，必要时办理通行证、保险、向当地报备。</p>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ============ 关于 ============ -->
+  <section class="about" id="about">
+    <div class="about__inner">
+      <div class="section__eyebrow">ABOUT THIS DEMO</div>
+      <h2 class="section__title">关于「山野路书」</h2>
+      <p class="about__text">
+        「山野路书」希望解决徒步路线信息分散、攻略质量参差不齐、新手难以判断路线难度的问题。
+        通过图文卡片、多维筛选和结构化攻略详情，让户外爱好者更直观地了解国内经典徒步路线，
+        降低出行前的信息整理成本。这是为 <strong>TRAE&nbsp;AI 创造力大赛</strong>（生活娱乐赛道）打造的初赛 Demo。
+      </p>
+      <div class="about__features">
+        <div class="about__feature">
+          <div class="about__feature-icon">🗺️</div>
+          <h4>50+ 路线覆盖</h4>
+          <p>从入门到挑战，覆盖川西、云南、西藏、新疆、青甘、华东、华北等多个区域。</p>
+        </div>
+        <div class="about__feature">
+          <div class="about__feature-icon">🎯</div>
+          <h4>结构化攻略</h4>
+          <p>路线概况、行程攻略、装备建议、安全提示四个模块一次看清。</p>
+        </div>
+        <div class="about__feature">
+          <div class="about__feature-icon">📱</div>
+          <h4>响应式设计</h4>
+          <p>桌面、平板、手机均适配，搜索、筛选、详情均可流畅交互。</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ============ 页脚 ============ -->
+  <footer class="footer">
+    <div class="footer__inner">
+      <div>
+        <div class="footer__brand">山野路书 · TRAIL ATLAS</div>
+        <div class="footer__meta">
+          出行前请以当地官方公告、天气预报与可靠向导信息为准。<br />
+          © <span id="year"></span> 山野路书 · 仅用于创意展示
+        </div>
+      </div>
+      <div>
+        <div class="footer__tags">
+          <span class="footer__tag">TRAE&nbsp;AI 创造力大赛</span>
+          <span class="footer__tag">生活娱乐赛道</span>
+          <span class="footer__tag">Demo 展示</span>
+        </div>
+      </div>
+    </div>
+  </footer>
+
+  <!-- ============ 路线详情弹窗 ============ -->
+  <div class="modal" id="routeModal" aria-hidden="true" role="dialog">
+    <div class="modal__backdrop" data-close></div>
+    <div class="modal__panel" role="document">
+      <button class="modal__close" data-close aria-label="关闭">×</button>
+      <div class="modal__cover" id="modalCover"></div>
+      <div class="modal__content" id="modalContent"></div>
+    </div>
+  </div>
+
+  <!-- ============ 返回顶部 ============ -->
+  <button class="to-top" id="toTop" aria-label="返回顶部">
+    <svg viewBox="0 0 24 24" width="20" height="20" fill="none" stroke="currentColor" stroke-width="2.5"
+      stroke-linecap="round" stroke-linejoin="round">
+      <path d="M12 19V5M5 12l7-7 7 7" />
+    </svg>
+  </button>
+
+  <script>
+    /* ============================================================
+       路线数据（52 条）
+       字段：id / name / region / area(筛选地区分组) / level / season /
+            days / distance / elevation / highlight / summary /
+            plan(数组) / gear(数组) / safety(数组) / tags / image
+       ============================================================ */
+    const ROUTES = [
+      // ===== 川西 / 横断山脉 =====
+      { id: "wugongshan", name: "武功山徒步", region: "江西 · 萍乡/吉安", area: "华东", level: "入门", season: "5–10 月", days: "1–2 天", distance: "12–20 km", elevation: "↑ 1100m / 1918m 顶", highlight: "10 万亩高山草甸 · 云海日出 · 入门多日露营经典", summary: "武功山以无垠的高山草甸和壮阔云海闻名，路线成熟、补给方便，是入门多日徒步的代表作。强度主要来自上升与长距离下坡，沿途有金顶、绝望坡、十八重山等经典段，适合周末出行。", plan: ["Day 1：沈子村或发云界进山，沿草甸线前往金顶附近营地，傍晚拍摄云海日落。", "Day 2：清晨观日出，午后沿石鼓寺方向下撤至龙山村出山。"], gear: ["防滑徒步鞋 / 越野鞋", "保温层（抓绒 + 轻薄羽绒）", "防晒帽、墨镜与防晒霜", "雨衣或冲锋衣", "登山杖与护膝"], safety: ["草甸雾大时能见度低，请勿离开主路。", "山顶风大易失温，注意保暖。", "雷雨天远离山脊高点与孤立树木。"], tags: ["草甸", "云海", "入门多日"], image: "https://images.unsplash.com/photo-1469474968028-56623f02e42e?auto=format&fit=crop&w=900&q=80" },
+      { id: "yubeng", name: "雨崩徒步", region: "云南 · 迪庆德钦", area: "云南", level: "进阶", season: "10–11 月 / 3–5 月", days: "3–5 天", distance: "30–60 km", elevation: "↑ 3500m / 3900+m", highlight: "梅里雪山脚下 · 神瀑冰湖 · 高海拔多日入门", summary: "在梅里雪山脚下穿行藏族村寨与神瀑、冰湖，风景密度极高。住宿与补给相对完善，但海拔适应是核心挑战，建议在德钦/飞来寺多留 1 天适应海拔。", plan: ["Day 1：飞来寺 → 西当温泉 → 翻越南宗垭口至雨崩村。", "Day 2：雨崩村 → 神瀑往返，适应海拔。", "Day 3：选择冰湖（强度大）或尼农峡谷（下撤长）出山。"], gear: ["登山杖（高海拔上下坡）", "冲锋衣裤 + 抓绒 + 轻羽绒", "头灯 + 备用电池", "高热量行动粮", "基础药品：布洛芬、止泻、创可贴"], safety: ["海拔超过 3000 m，注意高反症状，必要时下撤。", "冰湖路段碎石与冰雪，防滑装备必备。", "尼农峡谷部分路段临崖，雨天慎行。"], tags: ["雪山", "村落", "多日线"], image: "https://images.unsplash.com/photo-1486870591958-9b9d0d1dda99?auto=format&fit=crop&w=900&q=80" },
+      { id: "tigerleaping", name: "虎跳峡高路徒步", region: "云南 · 丽江/香格里拉", area: "云南", level: "入门", season: "10 月–次年 4 月", days: "2–3 天", distance: "22 km", elevation: "↑ 1400m / 2670m", highlight: "金沙江峡谷 · 28 道拐 · 客栈线", summary: "沿玉龙雪山与哈巴雪山间的峡谷山腰行走，俯瞰金沙江激流。客栈成熟、路况清晰，是入门多日徒步的热门选择。", plan: ["Day 1：桥头镇 → 纳西雅阁 → 经 28 道拐至茶马客栈。", "Day 2：茶马客栈 → 半路客栈 → 中虎跳。", "Day 3：核桃园 → Tina's 出山。"], gear: ["防滑徒步鞋", "20–30L 轻量背包", "防晒装备", "登山杖", "1L 以上水具"], safety: ["峡谷正午暴晒，注意防晒补水。", "中虎跳台阶湿滑，请勿在崖边拍照。", "雨季易有落石，关注沿线公告。"], tags: ["峡谷", "江景", "客栈线"], image: "https://images.unsplash.com/photo-1506905925346-21bda4d32df4?auto=format&fit=crop&w=900&q=80" },
+      { id: "kailash", name: "冈仁波齐转山", region: "西藏 · 阿里普兰", area: "西藏", level: "挑战", season: "5–10 月", days: "3 天", distance: "52 km", elevation: "↑ 2000m / 5630m", highlight: "世界级神山 · 信仰之路 · 卓玛拉垭口", summary: "藏传佛教与印度教共同的圣山，转山一圈约 52 公里，海拔最高 5630m 的卓玛拉垭口是核心考验。建议提前在拉萨或阿里地区多日适应海拔。", plan: ["Day 1：塔钦 → 止热寺，约 20km，缓上为主。", "Day 2：止热寺 → 卓玛拉垭口 → 尊最普寺/塔钦，约 22km，最关键一天。", "Day 3：机动 / 缓冲日。"], gear: ["羽绒服 + 保暖内衣 + 厚手套", "登山杖与防风外壳", "高热量食物", "头灯 + 备用电池", "应急氧气瓶"], safety: ["海拔极高，提前适应数天。", "急性高反应立即下撤。", "卓玛拉垭口风大低温，谨防失温。", "尊重当地宗教与自然。"], tags: ["高海拔", "宗教文化", "信仰之路"], image: "https://images.unsplash.com/photo-1516571748831-5d81767b788d?auto=format&fit=crop&w=900&q=80" },
+      { id: "luoke", name: "洛克线", region: "四川 · 甘孜稻城", area: "川西", level: "挑战", season: "9–10 月", days: "6–8 天", distance: "85 km", elevation: "↑ 5000+m / 4700+m", highlight: "三神山环绕 · 重走探险家洛克 1928 年路线", summary: "环穿稻城亚丁三神山——央迈勇、仙乃日、夏诺多吉。海拔高、补给少、垭口多，是高海拔无人区长线代表。建议组队、配备马帮与卫星通讯。", plan: ["Day 1：成都 / 稻城集结，确认装备与撤离方案。", "Day 2–3：嘟嘟卡牧场进山，翻越第一垭口至牛奶河营地。", "Day 4–6：穿越蛇湖、新果牛场、地狱谷等核心段。", "Day 7–8：出亚丁景区，返程稻城。"], gear: ["0℃ 以下睡袋 + 帐篷 + 防潮垫", "离线地图 / 卫星通讯", "炉头燃料与多日口粮", "急救包", "冲锋衣裤 + 抓绒 + 羽绒"], safety: ["新手不建议作为第一条多日长线。", "雷雨/降雪显著提高垭口风险。", "建立每日打卡机制与应急呼叫。"], tags: ["无人区", "高山湖泊", "长线"], image: "https://images.unsplash.com/photo-1464822759023-fed622ff2c3b?auto=format&fit=crop&w=900&q=80" },
+      { id: "changchuanbi", name: "长穿毕", region: "四川 · 阿坝四姑娘山", area: "川西", level: "高阶", season: "10–11 月 / 4–6 月", days: "3–4 天", distance: "55 km", elevation: "↑ 2500m / 4700m 垭口", highlight: "长坪沟–穿越–毕棚沟 · 川西穿越名片", summary: "经典川西穿越线，从四姑娘山长坪沟翻垭口至理县毕棚沟，雪山、海子与高山草甸轮番登场。强度集中在垭口当天。", plan: ["Day 1：日隆镇 → 长坪沟进山 → 木骡子营地。", "Day 2：木骡子 → 翻越垭口 → 毕棚沟方向营地。", "Day 3：营地下撤至毕棚沟出山。"], gear: ["露营装备", "防风冲锋衣 + 保暖层", "登山杖与护膝", "离线导航 + 充电宝", "垃圾袋"], safety: ["穿越线需办理景区相关手续。", "垭口天气恶劣应果断调整计划。", "下撤路长，保护膝盖与脚趾。"], tags: ["雪山", "穿越", "海子"], image: "https://images.unsplash.com/photo-1454496522488-7a8e488e8606?auto=format&fit=crop&w=900&q=80" },
+      { id: "dafeng", name: "四姑娘山大峰", region: "四川 · 阿坝四姑娘山", area: "川西", level: "高阶", season: "4–10 月", days: "2–3 天", distance: "20 km", elevation: "↑ 2300m / 5025m", highlight: "海拔 5025m · 入门级雪山", summary: "大峰被誉为最容易入门的雪山之一，无需技术装备，但仍需扎实体能与海拔适应。冲顶日凌晨出发，当日往返大本营。", plan: ["Day 1：日隆镇集合，体能与高反评估，前往大本营（约 4300m）。", "Day 2：凌晨出发冲顶，中午前下撤大本营，下午回日隆。"], gear: ["高山靴 + 雪套", "羽绒服 + 防风层 + 保暖手套", "登山杖 + 头灯", "雪镜（防雪盲）", "保温水壶"], safety: ["需办理登山证，建议跟随当地向导。", "凌晨冲顶寒冷且风大，避免单独行动。", "出现严重高反必须立即下撤。"], tags: ["雪山", "5000+", "向导"], image: "https://images.unsplash.com/photo-1551632811-561732d1e306?auto=format&fit=crop&w=900&q=80" },
+      { id: "kanas", name: "喀纳斯徒步", region: "新疆 · 阿勒泰", area: "新疆", level: "进阶", season: "6–10 月", days: "3–5 天", distance: "35 km", elevation: "↑ 1500m", highlight: "禾木 · 黑湖 · 喀纳斯湖 · 「小瑞士」", summary: "横穿阿尔泰山脉，林海、雪峰、河谷与图瓦人村落交替出现，是国内难得的「小瑞士」风格徒步。", plan: ["Day 1：贾登峪 / 禾木集结，沿喀纳斯河进山至小黑湖营地。", "Day 2：小黑湖 → 大黑湖 → 河谷营地。", "Day 3：穿越针叶林下撤至禾木村。"], gear: ["防水徒步鞋", "防蚊驱虫装备", "保温层 + 雨具", "60L 多日背包", "防熊提示哨子"], safety: ["夏秋温差大，夜间可至 0℃ 左右。", "部分区域信号微弱，离线地图必备。", "尊重图瓦人与哈萨克族牧民习俗。"], tags: ["林海", "湖泊", "村落"], image: "https://images.unsplash.com/photo-1501785888041-af3ef285b470?auto=format&fit=crop&w=900&q=80" },
+      { id: "niaopenghai", name: "鸟瞰海三色湖", region: "四川 · 甘孜稻城", area: "川西", level: "高阶", season: "9–10 月", days: "4–5 天", distance: "40 km", elevation: "↑ 2200m / 4700m", highlight: "三色湖 · 高海拔湖泊群 · 川西小众线", summary: "稻城鸟瞰海周边的三色湖路线，大、小鸟瞰海与三色湖串联，秋季金黄草甸+碧蓝湖泊层次极强。", plan: ["Day 1：成都 → 稻城适应海拔。", "Day 2：俄初山进山至大鸟瞰海营地。", "Day 3：穿越垭口至三色湖。", "Day 4：返程下撤。"], gear: ["帐篷睡袋（0℃ 以下）", "登山杖", "冲锋衣 + 羽绒", "离线地图", "高热量行动粮"], safety: ["海拔均在 4000m 以上，提前适应。", "线路开发程度低，建议跟队伍。", "雷雨天垭口慎行。"], tags: ["高山湖泊", "秋色", "小众"], image: "https://images.unsplash.com/photo-1506260408121-e353d10b87c7?auto=format&fit=crop&w=900&q=80" },
+      { id: "guhaizi", name: "贡嘎南环线", region: "四川 · 甘孜泸定/康定", area: "川西", level: "挑战", season: "5–10 月", days: "5–7 天", distance: "70 km", elevation: "↑ 4500m / 4900m", highlight: "蜀山之王贡嘎 · 南坡环线 · 草原冰川并存", summary: "环绕蜀山之王贡嘎雪山南坡，沿途经过子梅垫、上子梅村、巴望海、莫西沟等景点。最佳观赏机位是子梅垭口看贡嘎日照金山。", plan: ["Day 1：成都 → 康定 → 老榆林进山。", "Day 2：到达上子梅村适应海拔。", "Day 3：子梅垭口拍贡嘎，前往巴望海营地。", "Day 4–6：环穿至莫西沟出山。"], gear: ["全套露营装备", "保暖+防水", "登山杖", "卫星通讯", "充足口粮"], safety: ["贡嘎天气多变，能见度日内变化大。", "部分路段无明显路迹，需 GPS。", "海拔>4000m，注意身体反应。"], tags: ["雪山", "环线", "日照金山"], image: "https://images.unsplash.com/photo-1469854523086-cc02fe5d8800?auto=format&fit=crop&w=900&q=80" },
+      { id: "haiziguo", name: "海子沟", region: "四川 · 阿坝四姑娘山", area: "川西", level: "进阶", season: "5–10 月", days: "2 天", distance: "30 km", elevation: "↑ 800m / 4200m", highlight: "高山海子 · 朝山坪 · 大峰二峰大本营", summary: "四姑娘山三沟之一的海子沟，路线相对成熟。可以登顶朝山坪眺望幺妹峰，也是攀登大峰、二峰的必经之路。", plan: ["Day 1：日隆镇进山 → 朝山坪营地。", "Day 2：朝山坪登顶 → 海子沟出山。"], gear: ["徒步鞋", "保温层", "登山杖", "防晒装备", "充足饮水"], safety: ["朝山坪海拔 4200m，注意高反。", "下午容易下雨。", "尊重藏区习俗。"], tags: ["海子", "藏区", "雪山观景"], image: "https://images.unsplash.com/photo-1486591038900-c63c4f74d5d3?auto=format&fit=crop&w=900&q=80" },
+      { id: "siguniang", name: "二峰登顶", region: "四川 · 阿坝四姑娘山", area: "川西", level: "高阶", season: "4–10 月", days: "3 天", distance: "25 km", elevation: "↑ 2400m / 5276m", highlight: "海拔 5276m · 雪山入门进阶", summary: "比大峰高约 250m，最后冲顶段会经过冰雪混合地形，需要冰爪、安全带等技术装备，是国内最容易接触雪山技术装备的雪山之一。", plan: ["Day 1：日隆 → 大本营 4400m。", "Day 2：休整或拉练。", "Day 3：凌晨冲顶 → 当天回日隆。"], gear: ["高山靴 + 冰爪", "登山杖", "羽绒 + 冲锋衣", "雪镜", "头灯"], safety: ["有冰雪横切，需结组通过。", "建议有大峰经验后再来。", "强烈建议跟随专业向导。"], tags: ["雪山", "5000+", "技术装备"], image: "https://images.unsplash.com/photo-1483728642387-6c3bdd6c93e5?auto=format&fit=crop&w=900&q=80" },
+      { id: "yading-large", name: "亚丁大转山", region: "四川 · 甘孜稻城", area: "川西", level: "挑战", season: "9–10 月", days: "6–8 天", distance: "115 km", elevation: "↑ 5500+m", highlight: "央迈勇 · 仙乃日 · 夏诺多吉 大环线", summary: "环绕亚丁三神山的大环线，比洛克线更长更原始，含多个无人区垭口和高海拔湖泊。需要顶级体能与丰富长线经验。", plan: ["Day 1：稻城适应海拔。", "Day 2–7：穿越多个无人区垭口与冰湖。", "Day 8：出山返程。"], gear: ["顶级长线装备", "卫星电话", "10 天口粮", "冰镐", "急救包"], safety: ["仅适合资深长线徒步者。", "每年仅有约 1 个月窗口期。", "强烈建议商业队伍带队。"], tags: ["顶级长线", "无人区", "三神山"], image: "https://images.unsplash.com/photo-1480497490787-505ec076689f?auto=format&fit=crop&w=900&q=80" },
+
+      // ===== 云南 =====
+      { id: "haba", name: "哈巴雪山", region: "云南 · 迪庆香格里拉", area: "云南", level: "高阶", season: "4–10 月", days: "3 天", distance: "30 km", elevation: "↑ 2800m / 5396m", highlight: "云南最易登顶 5000+ 雪山", summary: "哈巴雪山海拔 5396m，是云南最容易登顶的 5000+ 雪山，与玉龙雪山隔虎跳峡相望。冲顶段有冰雪地形，建议跟向导。", plan: ["Day 1：哈巴村 → 大本营。", "Day 2：拉练或休整。", "Day 3：凌晨冲顶 → 下撤大本营 → 哈巴村。"], gear: ["高山靴 + 冰爪", "羽绒 + 冲锋衣", "登山杖", "雪镜", "头灯"], safety: ["建议有大峰/二峰经验。", "凌晨极冷，保暖优先。", "建议跟当地向导。"], tags: ["雪山", "5000+", "登山入门"], image: "https://images.unsplash.com/photo-1454496522488-7a8e488e8606?auto=format&fit=crop&w=900&q=80" },
+      { id: "yulong", name: "玉龙雪山扇子陡观景", region: "云南 · 丽江", area: "云南", level: "入门", season: "全年", days: "1 天", distance: "5 km", elevation: "↑ 400m / 4506m", highlight: "蓝月谷 · 冰川公园 · 索道辅助", summary: "依托索道到达 4506m 平台，再登栈道至 4680m 观景台。无需专业装备，但海拔上升快，注意高反。", plan: ["Day 1：丽江 → 玉龙雪山大索道 → 冰川公园栈道往返 → 蓝月谷。"], gear: ["保暖外套（夏天也要）", "防晒装备", "便携氧气", "防滑鞋"], safety: ["短时间海拔陡升，高反风险高。", "蓝月谷不可下水。", "防晒非常重要。"], tags: ["索道", "冰川", "观光徒步"], image: "https://images.unsplash.com/photo-1488646953014-85cb44e25828?auto=format&fit=crop&w=900&q=80" },
+      { id: "laojunshan", name: "老君山九十九龙潭", region: "云南 · 丽江", area: "云南", level: "入门", season: "5–10 月", days: "1–2 天", distance: "12 km", elevation: "↑ 600m", highlight: "高山湖群 · 杜鹃林 · 红石街", summary: "老君山是滇西北徒步隐藏宝藏，九十九龙潭是高山湖泊群，杜鹃花期非常震撼。", plan: ["Day 1：黎明 → 千龟山 → 九十九龙潭往返。"], gear: ["徒步鞋", "防晒", "雨衣", "保暖层"], safety: ["林区注意防火。", "雷雨季节避免登顶。", "尊重当地纳西族习俗。"], tags: ["杜鹃", "高山湖", "小众"], image: "https://images.unsplash.com/photo-1418065460487-3e41a6c84dc5?auto=format&fit=crop&w=900&q=80" },
+      { id: "meili-bigturn", name: "梅里外转山", region: "云南/西藏 · 德钦/察隅", area: "云南", level: "挑战", season: "9–10 月", days: "10–14 天", distance: "200+ km", elevation: "↑ 多次 4500+m 垭口", highlight: "藏地圣山 · 经典外转 · 长线挑战", summary: "藏传佛教八大神山之首梅里雪山的传统外转山线路，绕梅里全境需翻越多个 4000+m 垭口，沿途经过藏族村落与寺庙。", plan: ["Day 1–14：完整外转，按队伍能力分段，多次穿越川藏两省界。"], gear: ["顶级长线装备", "卫星电话", "高海拔药品", "保暖", "马帮"], safety: ["仅适合极资深者。", "宗教意义重大，注意礼仪。", "强烈建议藏族向导。"], tags: ["朝圣", "顶级长线", "藏区"], image: "https://images.unsplash.com/photo-1486870591958-9b9d0d1dda99?auto=format&fit=crop&w=900&q=80" },
+      { id: "shangrila-guoluo", name: "格咱徒步", region: "云南 · 香格里拉", area: "云南", level: "进阶", season: "5–10 月", days: "2–3 天", distance: "25 km", elevation: "↑ 1000m / 4500m", highlight: "高山牧场 · 藏式村落 · 普达措外围", summary: "香格里拉北部格咱地区的徒步线，远离主流景区，能体验真实的藏区牧场与雪山小径。", plan: ["Day 1：格咱 → 高山牧场营地。", "Day 2：穿越垭口往返高山湖。", "Day 3：原路下撤。"], gear: ["露营装备", "保暖", "防雨", "登山杖"], safety: ["海拔较高，注意身体。", "信号差，离线地图。", "尊重藏族习俗。"], tags: ["牧场", "藏区", "小众"], image: "https://images.unsplash.com/photo-1469474968028-56623f02e42e?auto=format&fit=crop&w=900&q=80" },
+
+      // ===== 西藏 =====
+      { id: "everestbc", name: "珠峰大本营徒步", region: "西藏 · 日喀则", area: "西藏", level: "高阶", season: "4–5 月 / 9–10 月", days: "2–4 天", distance: "20 km", elevation: "↑ 5200m", highlight: "世界之巅 · 日照金山 · 藏地圣景", summary: "从绒布寺前往珠峰大本营徒步段，可以近距离观赏珠穆朗玛峰。海拔 5200m，需要良好的高海拔适应。", plan: ["Day 1：拉萨 → 日喀则适应。", "Day 2：日喀则 → 绒布寺。", "Day 3：徒步至 EBC，傍晚日照金山。"], gear: ["羽绒服", "高海拔药品", "防晒", "墨镜"], safety: ["海拔极高，高反风险大。", "需办理边防证。", "天气多变，注意保暖。"], tags: ["世界之巅", "圣山", "高海拔"], image: "https://images.unsplash.com/photo-1486870591958-9b9d0d1dda99?auto=format&fit=crop&w=900&q=80" },
+      { id: "namucuo", name: "纳木错环湖徒步", region: "西藏 · 拉萨", area: "西藏", level: "进阶", season: "6–10 月", days: "3–5 天", distance: "60 km", elevation: "↑ 4700m 平均", highlight: "圣湖纳木错 · 念青唐古拉 · 高原星空", summary: "环绕世界海拔最高的咸水湖纳木错徒步，湖边草原与念青唐古拉雪山相伴。海拔均在 4700m 以上，强度来自海拔与日照。", plan: ["Day 1：拉萨 → 当雄 → 扎西半岛。", "Day 2–4：环湖南线徒步。", "Day 5：返程拉萨。"], gear: ["露营装备", "防晒（极强）", "保暖", "墨镜", "充足饮水"], safety: ["海拔极高，必须适应。", "强紫外线，注意防晒。", "尊重圣湖，不下湖。"], tags: ["圣湖", "草原", "星空"], image: "https://images.unsplash.com/photo-1470770841072-f978cf4d019e?auto=format&fit=crop&w=900&q=80" },
+      { id: "yangzuoyong", name: "羊卓雍错徒步", region: "西藏 · 山南", area: "西藏", level: "入门", season: "4–10 月", days: "1 天", distance: "10 km", elevation: "↑ 4400m", highlight: "西藏三大圣湖 · 翡翠色高原湖", summary: "西藏三大圣湖之一，可在湖边徒步赏景。短线、低强度，但海拔较高，适合作为进入高原的首选。", plan: ["Day 1：拉萨 → 岗巴拉山口 → 羊湖湖边徒步。"], gear: ["保暖", "防晒", "墨镜", "舒适徒步鞋"], safety: ["注意高反。", "尊重圣湖。", "山口风大。"], tags: ["圣湖", "短线", "观光"], image: "https://images.unsplash.com/photo-1454496522488-7a8e488e8606?auto=format&fit=crop&w=900&q=80" },
+      { id: "linzhi-namjagbarwa", name: "南迦巴瓦观山徒步", region: "西藏 · 林芝", area: "西藏", level: "入门", season: "3–4 月 / 10–11 月", days: "2 天", distance: "15 km", elevation: "↑ 800m / 3500m", highlight: "南迦巴瓦 · 桃花季 · 雅鲁藏布大峡谷", summary: "在林芝索松村或直白村附近徒步，可以多机位拍摄南迦巴瓦峰。3 月底至 4 月初的桃花期最美。", plan: ["Day 1：派镇 → 索松村。", "Day 2：直白村往返雅江观景台。"], gear: ["徒步鞋", "保暖", "相机", "无人机（注意法规）"], safety: ["林芝海拔较低，相对安全。", "雅江边注意安全。", "桃花季人多。"], tags: ["雪山", "桃花", "摄影"], image: "https://images.unsplash.com/photo-1540541338287-41700207dee6?auto=format&fit=crop&w=900&q=80" },
+      { id: "yarlung-grand-canyon", name: "雅鲁藏布大峡谷徒步", region: "西藏 · 林芝墨脱", area: "西藏", level: "挑战", season: "10–11 月", days: "10+ 天", distance: "100+ km", elevation: "↑ 多次 2000m+", highlight: "中国最后秘境 · 墨脱 · 原始森林", summary: "从派镇徒步进入墨脱的传统进藏路线之一，原始森林、悬崖栈道、蚂蟥与暴雨是常态。墨脱通公路后徒步进入的人减少，但仍是经典挑战。", plan: ["Day 1–10：派镇 → 多雄拉雪山 → 拉格 → 阿尼桥 → 墨脱县。"], gear: ["顶级雨季装备", "防蚂蟥袜", "卫星电话", "充足食物"], safety: ["有滑坡、塌方风险。", "蚂蟥与毒虫多。", "强烈建议跟有经验队伍。"], tags: ["顶级挑战", "原始森林", "进藏线"], image: "https://images.unsplash.com/photo-1469854523086-cc02fe5d8800?auto=format&fit=crop&w=900&q=80" },
+
+      // ===== 新疆 =====
+      { id: "tianshan-east", name: "东天山博格达环线", region: "新疆 · 昌吉", area: "新疆", level: "高阶", season: "7–9 月", days: "5–7 天", distance: "70 km", elevation: "↑ 3500m / 3800m", highlight: "博格达峰 · 高山牧场 · 哈萨克转场路", summary: "环绕博格达峰的经典徒步路线，沿途经过天池、三个岔达坂等景点，是新疆最具代表性的多日徒步之一。", plan: ["Day 1：阜康 → 三个岔进山。", "Day 2–5：环穿三个达坂。", "Day 6–7：天池出山。"], gear: ["完整露营装备", "保暖", "防雨", "登山杖", "马帮（可选）"], safety: ["天气多变，风雨频繁。", "海拔与体能并重。", "需在窗口期出行。"], tags: ["雪山", "环线", "牧场"], image: "https://images.unsplash.com/photo-1551632811-561732d1e306?auto=format&fit=crop&w=900&q=80" },
+      { id: "naerlati", name: "那拉提空中草原", region: "新疆 · 伊犁", area: "新疆", level: "入门", season: "6–9 月", days: "1–2 天", distance: "10 km", elevation: "↑ 400m", highlight: "亚高山草甸 · 马背民族文化", summary: "伊犁那拉提景区内的空中草原徒步段，地势平缓，是体验新疆草原徒步的入门选择。", plan: ["Day 1：那拉提景区 → 空中草原步道。"], gear: ["徒步鞋", "防晒", "保暖外套"], safety: ["高原日照强。", "尊重哈萨克族文化。"], tags: ["草原", "短线", "亲子"], image: "https://images.unsplash.com/photo-1448375240586-882707db888b?auto=format&fit=crop&w=900&q=80" },
+      { id: "muzart", name: "乌孙古道", region: "新疆 · 伊犁/阿克苏", area: "新疆", level: "挑战", season: "7–8 月", days: "6–7 天", distance: "130 km", elevation: "↑ 3700m+ 雪达坂", highlight: "千年古道 · 横穿天山 · 雪山冰湖", summary: "古丝绸之路的重要支线，从昭苏穿越天山主脉到达温宿。穿越冰大坂时风险较高，是新疆顶级长线之一。", plan: ["Day 1–7：昭苏 → 夏特古道 → 木扎尔特冰川 → 温宿。"], gear: ["完整长线装备", "登山绳/冰镐", "卫星电话", "马帮"], safety: ["冰大坂事故多发。", "建议跟成熟队伍。", "需办理边防证。"], tags: ["古道", "顶级长线", "冰川"], image: "https://images.unsplash.com/photo-1483728642387-6c3bdd6c93e5?auto=format&fit=crop&w=900&q=80" },
+      { id: "xiate", name: "夏特古道", region: "新疆 · 伊犁", area: "新疆", level: "挑战", season: "7–8 月", days: "5–6 天", distance: "120 km", elevation: "↑ 3500m+", highlight: "天山冰川 · 玄奘西行 · 木扎尔特", summary: "传说玄奘西行走过的古道，跨越天山主脉。冰川徒步与河谷穿越交替，强度极高。", plan: ["Day 1–6：夏特温泉 → 古道 → 木扎尔特冰川 → 温宿出山。"], gear: ["登山绳", "冰爪", "卫星电话", "干粮"], safety: ["木扎尔特冰川有暗裂缝。", "河谷涨水风险大。", "强烈建议向导带队。"], tags: ["冰川", "古道", "顶级"], image: "https://images.unsplash.com/photo-1470770841072-f978cf4d019e?auto=format&fit=crop&w=900&q=80" },
+      { id: "tashidaban", name: "塔什库尔干慕士塔格观山徒步", region: "新疆 · 喀什", area: "新疆", level: "进阶", season: "6–9 月", days: "2–3 天", distance: "20 km", elevation: "↑ 700m / 4400m", highlight: "冰山之父慕士塔格 · 高原湖泊", summary: "在帕米尔高原徒步，眺望海拔 7546m 的慕士塔格峰，沿途经过白沙湖、卡拉库勒湖。", plan: ["Day 1：喀什 → 卡拉库勒湖。", "Day 2：湖边徒步至冰川区。"], gear: ["高原装备", "防晒", "保暖"], safety: ["边境地区，注意证件。", "海拔 4000+，注意高反。"], tags: ["冰山", "高原湖", "帕米尔"], image: "https://images.unsplash.com/photo-1454496522488-7a8e488e8606?auto=format&fit=crop&w=900&q=80" },
+
+      // ===== 青甘 =====
+      { id: "nianbaoyuze", name: "年保玉则", region: "青海 · 果洛久治", area: "青甘", level: "进阶", season: "6–9 月", days: "3–4 天", distance: "40 km", elevation: "↑ 1500m / 4500m", highlight: "藏地仙境 · 高山湖泊群 · 神山", summary: "藏族苯教神山，环绕冰川与上百个高山湖泊。当前生态保护管控严格，需提前关注开放政策。", plan: ["Day 1：成都 → 久治。", "Day 2–3：仙女湖 → 年保玉则环穿。", "Day 4：返程。"], gear: ["露营装备", "防晒", "保暖"], safety: ["生态敏感区，注意保护。", "海拔较高。", "信号差。"], tags: ["神山", "高山湖", "藏区"], image: "https://images.unsplash.com/photo-1469474968028-56623f02e42e?auto=format&fit=crop&w=900&q=80" },
+      { id: "amunemaqen", name: "阿尼玛卿转山", region: "青海 · 果洛", area: "青甘", level: "挑战", season: "5–10 月", days: "5–7 天", distance: "150 km", elevation: "↑ 4500m+ 平均", highlight: "藏地神山 · 长线转山", summary: "藏族四大神山之一，海拔 6282m，转山一圈约 150 公里，全程平均海拔 4500m，是仅次于冈仁波齐的转山线。", plan: ["Day 1–7：玛沁县出发，按传统路线顺时针转山。"], gear: ["顶级长线装备", "马帮", "高海拔药品"], safety: ["全程高海拔。", "尊重藏地宗教。", "建议跟藏族向导。"], tags: ["神山", "转山", "顶级"], image: "https://images.unsplash.com/photo-1486870591958-9b9d0d1dda99?auto=format&fit=crop&w=900&q=80" },
+      { id: "qinghai-lake", name: "青海湖环湖徒步", region: "青海 · 海北/海南", area: "青甘", level: "进阶", season: "6–9 月", days: "5–7 天", distance: "100+ km", elevation: "平均 3200m", highlight: "中国最大湖 · 油菜花 · 草原", summary: "环青海湖徒步全程约 360 公里，可分段徒步。最佳路段为二郎剑—黑马河—鸟岛，沿途油菜花海与湖景交织。", plan: ["按个人时间分段，建议日均 20 km。"], gear: ["徒步鞋", "防晒（极强）", "保暖", "雨具"], safety: ["公路徒步注意车辆。", "高原日照强。", "夜间有冷风。"], tags: ["大湖", "草原", "公路徒步"], image: "https://images.unsplash.com/photo-1470770841072-f978cf4d019e?auto=format&fit=crop&w=900&q=80" },
+      { id: "qilian-mountain", name: "祁连山卓尔山", region: "青海 · 祁连", area: "青甘", level: "入门", season: "5–10 月", days: "1 天", distance: "8 km", elevation: "↑ 400m / 4300m", highlight: "丹霞 + 草原 + 雪山", summary: "短线观光徒步，可眺望祁连山主脉和八宝镇全貌。秋季金黄草原与远处雪山形成强烈反差。", plan: ["Day 1：祁连县 → 卓尔山观景台徒步。"], gear: ["徒步鞋", "保暖外套", "防晒"], safety: ["海拔 4000+，注意高反。", "夜间寒冷。"], tags: ["丹霞", "草原", "短线"], image: "https://images.unsplash.com/photo-1454496522488-7a8e488e8606?auto=format&fit=crop&w=900&q=80" },
+      { id: "zhangye", name: "张掖丹霞徒步", region: "甘肃 · 张掖", area: "青甘", level: "入门", season: "5–10 月", days: "1 天", distance: "10 km", elevation: "↑ 200m", highlight: "七彩丹霞 · 地貌奇观", summary: "在张掖丹霞地质公园内徒步，欣赏世界级七彩丹霞地貌。落日时分色彩最丰富。", plan: ["Day 1：景区栈道徒步 + 4 个观景台。"], gear: ["徒步鞋", "防晒", "保暖外套"], safety: ["禁止越栈道。", "夏季暴晒。", "保护脆弱地貌。"], tags: ["丹霞", "短线", "地质奇观"], image: "https://images.unsplash.com/photo-1518391846015-55a9cc003b25?auto=format&fit=crop&w=900&q=80" },
+      { id: "menyuan", name: "门源油菜花徒步", region: "青海 · 海北", area: "青甘", level: "入门", season: "7 月", days: "1–2 天", distance: "15 km", elevation: "↑ 200m", highlight: "百里油菜花海 · 祁连雪山", summary: "7 月门源百里油菜花海是西部最壮观的花季之一，可在花田中徒步穿行，远眺祁连雪山。", plan: ["Day 1：门源 → 油菜花田观光徒步。"], gear: ["徒步鞋", "防晒", "防虫"], safety: ["不要踩踏花田。", "防晒重要。"], tags: ["花海", "短线", "草原"], image: "https://images.unsplash.com/photo-1520637836862-4d197d17c55a?auto=format&fit=crop&w=900&q=80" },
+
+      // ===== 华东 =====
+      { id: "huangshan", name: "黄山徒步", region: "安徽 · 黄山", area: "华东", level: "入门", season: "全年", days: "2 天", distance: "15 km", elevation: "↑ 1300m / 1864m", highlight: "五岳归来不看山 · 云海怪松", summary: "黄山徒步以云海、奇松、怪石著称。可选择云谷寺—白鹅岭—北海—光明顶—西海大峡谷—天海—玉屏楼—迎客松—慈光阁。", plan: ["Day 1：云谷寺上山 → 北海宾馆住宿 → 看日落。", "Day 2：日出 → 西海大峡谷 → 玉屏楼 → 慈光阁下山。"], gear: ["徒步鞋", "防滑", "雨具", "保温"], safety: ["山顶风大，注意保暖。", "雨天台阶湿滑。", "节假日人多。"], tags: ["五岳", "云海", "经典"], image: "https://images.unsplash.com/photo-1545569310-fe7eaa9d6a3e?auto=format&fit=crop&w=900&q=80" },
+      { id: "taishan", name: "泰山夜爬", region: "山东 · 泰安", area: "华北", level: "入门", season: "全年", days: "1 晚", distance: "9 km", elevation: "↑ 1300m / 1545m", highlight: "五岳之首 · 登顶看日出", summary: "中国最经典的夜爬路线之一，从红门—中天门—南天门—玉皇顶。一晚登顶看日出，回程缆车下山。", plan: ["Day 1 晚：红门出发夜爬 → 玉皇顶等日出 → 索道下山。"], gear: ["头灯", "保暖（山顶大风）", "饮用水", "徒步鞋"], safety: ["夜间台阶多，注意脚下。", "山顶寒冷，需棉服。", "节假日拥堵严重。"], tags: ["五岳", "夜爬", "日出"], image: "https://images.unsplash.com/photo-1486870591958-9b9d0d1dda99?auto=format&fit=crop&w=900&q=80" },
+      { id: "huashan", name: "华山长空栈道", region: "陕西 · 渭南", area: "华北", level: "进阶", season: "4–10 月", days: "1–2 天", distance: "12 km", elevation: "↑ 1500m / 2155m", highlight: "奇险天下第一山 · 长空栈道 · 鹞子翻身", summary: "华山以险著称，长空栈道是最具代表性的极限路段。智勇结合者可挑战，恐高者绕行。", plan: ["Day 1：玉泉院 → 北峰 → 苍龙岭 → 西峰住宿。", "Day 2：长空栈道 → 南峰 → 东峰看日出 → 下山。"], gear: ["防滑徒步鞋", "保暖", "头灯（夜爬）"], safety: ["长空栈道必须扣安全绳。", "恐高者勿尝试险路。", "雨雪天关闭。"], tags: ["五岳", "极限", "栈道"], image: "https://images.unsplash.com/photo-1469474968028-56623f02e42e?auto=format&fit=crop&w=900&q=80" },
+      { id: "putuoshan", name: "雁荡山", region: "浙江 · 温州", area: "华东", level: "入门", season: "全年", days: "1–2 天", distance: "12 km", elevation: "↑ 700m / 1108m", highlight: "海上名山 · 灵岩飞瀑 · 大龙湫", summary: "中国十大名山之一，景区内可徒步穿越灵峰、灵岩、大龙湫等核心景区。", plan: ["Day 1：灵峰夜景 → 灵岩飞渡。", "Day 2：大龙湫 → 雁湖。"], gear: ["徒步鞋", "雨具", "防滑"], safety: ["山路湿滑。", "夜景观赏注意安全。"], tags: ["名山", "瀑布", "海岸山"], image: "https://images.unsplash.com/photo-1448375240586-882707db888b?auto=format&fit=crop&w=900&q=80" },
+      { id: "lushan", name: "庐山三叠泉", region: "江西 · 九江", area: "华东", level: "入门", season: "4–10 月", days: "1–2 天", distance: "10 km", elevation: "↑ 600m / 1474m", highlight: "三叠泉 · 含鄱口 · 云雾庐山", summary: "庐山以云雾、瀑布、避暑著称。三叠泉徒步段从牯岭出发，约半天往返。", plan: ["Day 1：牯岭 → 含鄱口 → 三叠泉。", "Day 2：花径 → 锦绣谷 → 仙人洞。"], gear: ["徒步鞋", "雨具", "保暖外套"], safety: ["云雾湿滑。", "夏季避暑人多。"], tags: ["瀑布", "云海", "避暑"], image: "https://images.unsplash.com/photo-1540541338287-41700207dee6?auto=format&fit=crop&w=900&q=80" },
+      { id: "qiyunshan", name: "齐云山徒步", region: "安徽 · 黄山", area: "华东", level: "入门", season: "全年", days: "1 天", distance: "8 km", elevation: "↑ 400m / 585m", highlight: "中国四大道教名山 · 丹霞地貌", summary: "中国四大道教名山之一，徽州地区代表，丹霞地貌与道家文化交织，徒步强度低。", plan: ["Day 1：登封桥 → 望仙楼 → 月华街 → 太素宫。"], gear: ["徒步鞋", "防晒"], safety: ["注意保护文物。", "雨天台阶湿滑。"], tags: ["道教名山", "丹霞", "短线"], image: "https://images.unsplash.com/photo-1516708970232-7d9078b40e1d?auto=format&fit=crop&w=900&q=80" },
+      { id: "wuyishan", name: "武夷山三十六峰", region: "福建 · 南平", area: "华东", level: "入门", season: "全年", days: "2 天", distance: "16 km", elevation: "↑ 800m / 717m", highlight: "丹山碧水 · 九曲溪 · 大红袍", summary: "世界双遗产，丹霞地貌+亚热带森林，可徒步天游峰、虎啸岩，搭配九曲溪竹排体验经典武夷。", plan: ["Day 1：天游峰 → 桃源洞 → 九曲溪。", "Day 2：虎啸岩 → 一线天 → 武夷宫。"], gear: ["徒步鞋", "雨具", "保暖"], safety: ["丹霞岩壁注意安全。", "雨天易滑。"], tags: ["世遗", "丹霞", "茶文化"], image: "https://images.unsplash.com/photo-1518391846015-55a9cc003b25?auto=format&fit=crop&w=900&q=80" },
+
+      // ===== 华北 =====
+      { id: "great-wall-jiankou", name: "箭扣长城徒步", region: "北京 · 怀柔", area: "华北", level: "进阶", season: "3–11 月", days: "1 天", distance: "8 km", elevation: "↑ 600m", highlight: "野长城 · 鹰飞倒仰 · 九眼楼", summary: "未开发的明代长城段，地势险要、保存原貌。从西栅子村上鹰飞倒仰，再穿越至慕田峪。", plan: ["Day 1：西栅子 → 鹰飞倒仰 → 北京结 → 慕田峪。"], gear: ["登山鞋", "护具", "保暖", "充足饮水"], safety: ["未开发野长城风险高。", "陡峭无护栏。", "建议有经验者带队。"], tags: ["长城", "野路", "古迹"], image: "https://images.unsplash.com/photo-1508804185872-d7badad00f7d?auto=format&fit=crop&w=900&q=80" },
+      { id: "great-wall-jinshanling", name: "金山岭长城徒步", region: "河北 · 承德", area: "华北", level: "入门", season: "全年", days: "1 天", distance: "10 km", elevation: "↑ 400m", highlight: "保存最完好的明长城 · 摄影圣地", summary: "金山岭—司马台是公认最适合徒步的长城段，敌楼密集、视野开阔，秋色与日出尤其震撼。", plan: ["Day 1：金山岭东门 → 司马台。"], gear: ["徒步鞋", "防晒", "保暖"], safety: ["部分敌楼无护栏。", "夏季暴晒。"], tags: ["长城", "经典", "摄影"], image: "https://images.unsplash.com/photo-1545569310-fe7eaa9d6a3e?auto=format&fit=crop&w=900&q=80" },
+      { id: "wutaishan", name: "五台山五寺连穿", region: "山西 · 忻州", area: "华北", level: "入门", season: "5–10 月", days: "2 天", distance: "20 km", elevation: "↑ 800m / 3061m", highlight: "佛教四大名山 · 五座台顶串联", summary: "可分段徒步，也可一日完成北台、东台、中台、西台、南台连穿，体验文殊菩萨道场。", plan: ["Day 1：北台 → 东台 → 中台。", "Day 2：西台 → 南台。"], gear: ["徒步鞋", "保暖（高山）", "防晒", "饮水"], safety: ["海拔 3000+，可能高反。", "夜间寒冷。", "尊重佛教文化。"], tags: ["佛教名山", "连穿", "文化"], image: "https://images.unsplash.com/photo-1540541338287-41700207dee6?auto=format&fit=crop&w=900&q=80" },
+      { id: "songshan", name: "嵩山徒步", region: "河南 · 登封", area: "华北", level: "入门", season: "全年", days: "1 天", distance: "10 km", elevation: "↑ 800m / 1492m", highlight: "天地之中 · 少林寺 · 中岳", summary: "五岳之中岳，太室山与少室山组合。可徒步登顶峻极峰，俯瞰中原大地。", plan: ["Day 1：登封 → 嵩阳书院 → 峻极峰 → 下山。"], gear: ["徒步鞋", "防晒", "保暖"], safety: ["山路陡峭注意安全。", "夏季雷阵雨。"], tags: ["五岳", "禅宗", "古迹"], image: "https://images.unsplash.com/photo-1469474968028-56623f02e42e?auto=format&fit=crop&w=900&q=80" },
+      { id: "miaofengshan", name: "妙峰山", region: "北京 · 门头沟", area: "华北", level: "入门", season: "4–10 月", days: "1 天", distance: "8 km", elevation: "↑ 600m / 1291m", highlight: "京西第一名山 · 玫瑰花海", summary: "北京周边热门一日徒步，5 月玫瑰花期最美。涧沟村—金顶—涧沟村往返。", plan: ["Day 1：涧沟村 → 妙峰山金顶。"], gear: ["徒步鞋", "防晒", "饮水"], safety: ["夏季暴晒。", "保护花海。"], tags: ["花海", "周末", "近郊"], image: "https://images.unsplash.com/photo-1469474968028-56623f02e42e?auto=format&fit=crop&w=900&q=80" },
+      { id: "lingshan", name: "灵山徒步", region: "北京 · 门头沟", area: "华北", level: "入门", season: "5–10 月", days: "1 天", distance: "12 km", elevation: "↑ 700m / 2303m", highlight: "北京最高峰 · 高山草甸", summary: "海拔 2303m，是北京第一高峰。山顶有亚高山草甸，夏天凉爽，是北京周边的「小武功山」。", plan: ["Day 1：江水河村 → 山顶草甸 → 原路下山。"], gear: ["徒步鞋", "防晒", "保暖（山顶大风）"], safety: ["山顶风大。", "防晒。"], tags: ["草甸", "周末", "周末"], image: "https://images.unsplash.com/photo-1469854523086-cc02fe5d8800?auto=format&fit=crop&w=900&q=80" },
+      { id: "wudaliangzi", name: "百花山", region: "北京 · 门头沟", area: "华北", level: "入门", season: "5–9 月", days: "1 天", distance: "10 km", elevation: "↑ 600m / 1991m", highlight: "百花山 · 高山花海", summary: "北京西部典型的中山植被景观，初夏百花盛开，是周末徒步好去处。", plan: ["Day 1：百花山主峰环线。"], gear: ["徒步鞋", "防晒", "雨具"], safety: ["雷雨天避免登顶。"], tags: ["花海", "周末", "近郊"], image: "https://images.unsplash.com/photo-1448375240586-882707db888b?auto=format&fit=crop&w=900&q=80" },
+
+      // ===== 华南 =====
+      { id: "wugong-fujian", name: "戴云山", region: "福建 · 泉州", area: "华南", level: "入门", season: "全年", days: "1 天", distance: "12 km", elevation: "↑ 800m / 1856m", highlight: "闽中屋脊 · 高山花卉", summary: "福建第二高峰，有高山黄山松与杜鹃林，云雾常年缭绕，地处亚热带，徒步窗口期长。", plan: ["Day 1：戴云山自然保护区 → 主峰。"], gear: ["徒步鞋", "雨具"], safety: ["云雾天能见度低。", "山顶风大。"], tags: ["华南最高", "杜鹃", "亚热带"], image: "https://images.unsplash.com/photo-1418065460487-3e41a6c84dc5?auto=format&fit=crop&w=900&q=80" },
+      { id: "wuzhishan", name: "五指山", region: "海南 · 五指山市", area: "华南", level: "入门", season: "全年", days: "1 天", distance: "8 km", elevation: "↑ 800m / 1867m", highlight: "海南最高峰 · 热带雨林", summary: "海南屋脊，攀登经过五个山指。原始热带雨林徒步体验，路况阶梯化，但湿滑陡峭。", plan: ["Day 1：水满乡 → 第二指（一般终点）。"], gear: ["防滑徒步鞋", "防虫", "雨具"], safety: ["雨林湿滑。", "蚂蟥与毒蛇。", "高温高湿。"], tags: ["热带雨林", "海南", "亚热带"], image: "https://images.unsplash.com/photo-1448375240586-882707db888b?auto=format&fit=crop&w=900&q=80" },
+      { id: "danxiashan", name: "丹霞山徒步", region: "广东 · 韶关", area: "华南", level: "入门", season: "全年", days: "1–2 天", distance: "15 km", elevation: "↑ 400m", highlight: "丹霞地貌命名地 · 阳元山阴元石", summary: "世界自然遗产，丹霞地貌典型代表。可徒步长老峰、阳元山、巴寨等景区。", plan: ["Day 1：长老峰 → 阳元山。", "Day 2：巴寨 → 锦江漂流。"], gear: ["徒步鞋", "防晒", "饮水"], safety: ["夏季暴晒。", "巴寨段陡峭。"], tags: ["世遗", "丹霞", "广东"], image: "https://images.unsplash.com/photo-1518391846015-55a9cc003b25?auto=format&fit=crop&w=900&q=80" },
+      { id: "yangshuo", name: "阳朔遇龙河徒步", region: "广西 · 桂林", area: "华南", level: "入门", season: "全年", days: "1 天", distance: "20 km", elevation: "↑ 100m", highlight: "桂林山水 · 田园峰林 · 漂流", summary: "在阳朔遇龙河两岸徒步或骑行，喀斯特峰林与稻田河流交织，是中国最具代表性的山水徒步。", plan: ["Day 1：金龙桥 → 富里桥 → 工农桥。"], gear: ["徒步鞋", "防晒", "防雨"], safety: ["夏季暴晒严重。", "注意车辆。"], tags: ["山水", "田园", "短线"], image: "https://images.unsplash.com/photo-1506905925346-21bda4d32df4?auto=format&fit=crop&w=900&q=80" },
+      { id: "lugu-southwest", name: "西樵山", region: "广东 · 佛山", area: "华南", level: "入门", season: "全年", days: "1 天", distance: "8 km", elevation: "↑ 200m / 346m", highlight: "广东四大名山 · 翠岩瀑布", summary: "广东人最熟悉的近郊徒步山，山路成熟，秋冬最舒适，是周末家庭出行的热门选择。", plan: ["Day 1：山门 → 白云洞 → 天湖 → 山顶。"], gear: ["徒步鞋", "防晒", "饮水"], safety: ["夏季高温。", "蚊虫多。"], tags: ["近郊", "亲子", "周末"], image: "https://images.unsplash.com/photo-1469474968028-56623f02e42e?auto=format&fit=crop&w=900&q=80" },
+
+      // ===== 周边 / 东北 =====
+      { id: "changbai", name: "长白山西坡徒步", region: "吉林 · 白山", area: "华北", level: "进阶", season: "6–9 月", days: "1–2 天", distance: "15 km", elevation: "↑ 800m / 2691m", highlight: "天池 · 高山苔原 · 火山口", summary: "长白山西坡可徒步攀登王池、梯子河、锦江峡谷。最经典是天池徒步，强度低但海拔高，注意防晒与天气。", plan: ["Day 1：西坡 → 王池 → 天池观景台。"], gear: ["徒步鞋", "防晒", "保暖", "雨具"], safety: ["天气多变。", "高山苔原脆弱。", "禁止下池。"], tags: ["天池", "火山", "苔原"], image: "https://images.unsplash.com/photo-1448375240586-882707db888b?auto=format&fit=crop&w=900&q=80" },
+      { id: "ailao", name: "哀牢山徒步", region: "云南 · 普洱", area: "云南", level: "高阶", season: "11 月–次年 4 月", days: "2–3 天", distance: "30 km", elevation: "↑ 1500m / 3166m", highlight: "原始森林 · 神秘哀牢", summary: "国家级自然保护区，原始森林密布，地形复杂、信号差。需要有经验领队，普通游客建议跟随队伍并办理手续。", plan: ["Day 1–3：金山口 → 哀牢山主脊 → 出山。"], gear: ["完整露营装备", "GPS", "卫星电话", "防虫装备"], safety: ["失温与迷路风险高。", "禁止单人擅入。", "需办理手续。"], tags: ["原始森林", "保护区", "高难度"], image: "https://images.unsplash.com/photo-1418065460487-3e41a6c84dc5?auto=format&fit=crop&w=900&q=80" }
+    ];
+
+    /* ============ 难度样式映射 ============ */
+    const LEVEL_BADGE = { 入门: "badge--ok", 进阶: "badge--info", 高阶: "badge--warn", 挑战: "badge--bad" };
+
+    /* ============ SVG 兜底封面（图片加载失败时使用） ============ */
+    function makeFallback(level) {
+      const palette = {
+        入门: ["#a4cf8e", "#3f6f4a"],
+        进阶: ["#7fb6c9", "#3a5a78"],
+        高阶: ["#d4a55a", "#a06a2c"],
+        挑战: ["#d6889b", "#7a3744"]
+      };
+      const [c1, c2] = palette[level] || palette["入门"];
+      const id = "fb" + Math.random().toString(36).slice(2, 8);
+      const svg = `<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 800 600'>
+          <defs><linearGradient id='${id}' x1='0' y1='0' x2='0' y2='1'>
+            <stop offset='0' stop-color='${c1}'/><stop offset='1' stop-color='${c2}'/>
+          </linearGradient></defs>
+          <rect width='800' height='600' fill='url(#${id})'/>
+          <path d='M0,420 L150,260 L260,340 L380,200 L500,320 L620,240 L800,380 L800,600 L0,600 Z' fill='rgba(0,0,0,0.18)'/>
+          <path d='M0,470 L160,330 L300,420 L450,290 L580,400 L720,340 L800,440 L800,600 L0,600 Z' fill='rgba(0,0,0,0.32)'/>
+          <circle cx='620' cy='150' r='42' fill='rgba(255,255,255,0.5)'/>
+        </svg>`;
+      return "data:image/svg+xml;utf8," + encodeURIComponent(svg);
+    }
+
+    /* ============ 渲染卡片 ============ */
+    const grid = document.getElementById("routeGrid");
+    const moreWrap = document.getElementById("moreWrap");
+    const moreBtn = document.getElementById("moreBtn");
+    const countNum = document.getElementById("countNum");
+    const PAGE_SIZE = 9;
+    let visibleCount = PAGE_SIZE;
+    let currentList = [];
+
+    const state = {
+      level: "all",
+      region: "all",
+      keyword: ""
+    };
+
+    function applyFilter() {
+      const kw = state.keyword.trim().toLowerCase();
+      currentList = ROUTES.filter(r => {
+        if (state.level !== "all" && r.level !== state.level) return false;
+        if (state.region !== "all" && r.area !== state.region) return false;
+        if (kw) {
+          const hay = (r.name + r.region + r.highlight + r.summary + r.tags.join(" ")).toLowerCase();
+          if (!hay.includes(kw)) return false;
+        }
+        return true;
+      });
+      visibleCount = PAGE_SIZE;
+      countNum.textContent = currentList.length;
+      renderGrid();
+    }
+
+    function renderGrid() {
+      if (currentList.length === 0) {
+        grid.innerHTML = `
+            <div class="empty">
+              <div class="empty__icon">🏕️</div>
+              <div class="empty__title">没有匹配的路线</div>
+              <div class="empty__hint">试试调整难度、地区或换个关键词搜索。</div>
+            </div>`;
+        moreWrap.style.display = "none";
+        return;
+      }
+      const slice = currentList.slice(0, visibleCount);
+      grid.innerHTML = slice.map(cardTpl).join("");
+      moreWrap.style.display = currentList.length > visibleCount ? "block" : "none";
+    }
+
+    function cardTpl(r) {
+      const badge = LEVEL_BADGE[r.level] || "badge--ok";
+      return `
+          <article class="card" data-id="${r.id}">
+            <div class="card__cover">
+              <img class="card__img" loading="lazy"
+                src="${r.image}"
+                alt="${r.name}"
+                onerror="this.onerror=null;this.src='${makeFallback(r.level)}'" />
+              <div class="card__cover-overlay"></div>
+              <span class="card__badge ${badge}">${r.level}</span>
+              <span class="card__season-badge">📅 ${r.season}</span>
+              <div class="card__cover-title">
+                <h3>${r.name}</h3>
+                <div class="region">📍 ${r.region}</div>
+              </div>
+            </div>
+            <div class="card__body">
+              <p class="card__highlight">${r.highlight}</p>
+              <div class="card__meta">
+                <div class="card__meta-item">
+                  <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="10"/><polyline points="12 6 12 12 16 14"/></svg>
+                  ${r.days}
+                </div>
+                <div class="card__meta-item">
+                  <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="3 12 9 12 12 5 15 19 18 12 21 12"/></svg>
+                  ${r.distance}
+                </div>
+                <div class="card__meta-item">
+                  <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M3 18l6-8 4 5 3-3 5 6"/></svg>
+                  ${r.elevation}
+                </div>
+              </div>
+              <button class="card__btn" data-view="${r.id}">查看完整攻略 →</button>
+            </div>
+          </article>`;
+    }
+
+    /* ============ 筛选事件 ============ */
+    document.getElementById("filters").addEventListener("click", e => {
+      const btn = e.target.closest(".filter");
+      if (!btn) return;
+      const group = btn.closest(".filter-group");
+      const groupKey = group.dataset.group;
+      group.querySelectorAll(".filter").forEach(f => f.classList.remove("is-active"));
+      btn.classList.add("is-active");
+      if (groupKey === "level") state.level = btn.dataset.level;
+      if (groupKey === "region") state.region = btn.dataset.region;
+      applyFilter();
+    });
+
+    document.getElementById("searchInput").addEventListener("input", e => {
+      state.keyword = e.target.value;
+      applyFilter();
+    });
+
+    moreBtn.addEventListener("click", () => {
+      visibleCount += PAGE_SIZE;
+      renderGrid();
+      // 滚到新内容
+      const newCards = grid.querySelectorAll(".card");
+      const target = newCards[Math.max(0, visibleCount - PAGE_SIZE - 1)];
+      if (target) target.scrollIntoView({ behavior: "smooth", block: "center" });
+    });
+
+    /* ============ Hero CTA ============ */
+    document.getElementById("exploreBtn").addEventListener("click", () => {
+      document.getElementById("routes").scrollIntoView({ behavior: "smooth" });
+    });
+
+    /* ============ 移动端导航 ============ */
+    const navToggle = document.getElementById("navToggle");
+    const navLinks = document.getElementById("navLinks");
+    navToggle.addEventListener("click", () => navLinks.classList.toggle("is-open"));
+    navLinks.addEventListener("click", e => {
+      if (e.target.matches(".nav__link")) navLinks.classList.remove("is-open");
+    });
+
+    /* ============ 路线详情弹窗 ============ */
+    const modal = document.getElementById("routeModal");
+    const modalCover = document.getElementById("modalCover");
+    const modalContent = document.getElementById("modalContent");
+
+    function openModal(id) {
+      const r = ROUTES.find(x => x.id === id);
+      if (!r) return;
+      const badge = LEVEL_BADGE[r.level] || "badge--ok";
+      modalCover.innerHTML = `
+          <img src="${r.image}" alt="${r.name}"
+            onerror="this.onerror=null;this.src='${makeFallback(r.level)}'" />
+          <div class="modal__cover-overlay">
+            <div class="modal__cover-info">
+              <span class="level-badge ${badge}">${r.level}</span>
+              <h3>${r.name}</h3>
+              <p>📍 ${r.region}</p>
+            </div>
+          </div>`;
+      modalContent.innerHTML = `
           <div class="modal__quick">
             <div class="quick__item">
-              <div class="quick__label">难度等级</div>
-              <div class="quick__value">${r.level}</div>
-            </div>
-            <div class="quick__item">
+              <span class="quick__icon">📅</span>
               <div class="quick__label">推荐季节</div>
               <div class="quick__value">${r.season}</div>
             </div>
             <div class="quick__item">
+              <span class="quick__icon">⏱️</span>
               <div class="quick__label">建议天数</div>
               <div class="quick__value">${r.days}</div>
             </div>
             <div class="quick__item">
-              <div class="quick__label">所在地区</div>
-              <div class="quick__value">${r.region.split(" · ")[0] || r.region}</div>
+              <span class="quick__icon">📏</span>
+              <div class="quick__label">参考里程</div>
+              <div class="quick__value">${r.distance}</div>
+            </div>
+            <div class="quick__item">
+              <span class="quick__icon">⛰️</span>
+              <div class="quick__label">海拔信息</div>
+              <div class="quick__value">${r.elevation}</div>
             </div>
           </div>
-          <div class="modal__section">
-            <h4 class="modal__section-title"><span class="modal__section-icon">📖</span>路线介绍</h4>
+
+          <div class="modal__sec">
+            <h4 class="modal__sec-title"><span class="modal__sec-icon">📖</span>路线概况</h4>
             <p>${r.summary}</p>
-            <div class="modal__highlights" style="margin-top:10px">
-              <span class="highlight-pill">✨ ${r.highlight}</span>
+            <div class="modal__highlights">
+              ${r.tags.map(t => `<span class="highlight-pill">#${t}</span>`).join("")}
             </div>
           </div>
-          <div class="modal__section">
-            <h4 class="modal__section-title"><span class="modal__section-icon">🗺️</span>行程攻略</h4>
-            <ul>${r.plan.map(p => `<li>${p}</li>`).join("")}</ul>
+
+          <div class="modal__sec">
+            <h4 class="modal__sec-title"><span class="modal__sec-icon">🗺️</span>行程攻略</h4>
+            <div class="timeline">
+              ${r.plan.map(p => `
+                <div class="timeline__item">
+                  <div class="timeline__text">${p}</div>
+                </div>
+              `).join("")}
+            </div>
           </div>
-          <div class="modal__section">
-            <h4 class="modal__section-title"><span class="modal__section-icon">🎒</span>装备建议</h4>
+
+          <div class="modal__sec">
+            <h4 class="modal__sec-title"><span class="modal__sec-icon">🎒</span>装备建议</h4>
             <ul>${r.gear.map(g => `<li>${g}</li>`).join("")}</ul>
           </div>
-          <div class="modal__section">
-            <h4 class="modal__section-title"><span class="modal__section-icon">⚠️</span>安全提示</h4>
+
+          <div class="modal__sec">
+            <h4 class="modal__sec-title"><span class="modal__sec-icon">⚠️</span>安全提示</h4>
             <ul>${r.safety.map(s => `<li>${s}</li>`).join("")}</ul>
           </div>
         `;
-        modal.classList.add("is-open");
-        modal.setAttribute("aria-hidden", "false");
-        document.body.classList.add("no-scroll");
+      modal.classList.add("is-open");
+      modal.setAttribute("aria-hidden", "false");
+      document.body.classList.add("no-scroll");
+      modalContent.scrollTop = 0;
+    }
+
+    function closeModal() {
+      modal.classList.remove("is-open");
+      modal.setAttribute("aria-hidden", "true");
+      document.body.classList.remove("no-scroll");
+    }
+
+    grid.addEventListener("click", e => {
+      const btn = e.target.closest("[data-view]");
+      const card = e.target.closest(".card");
+      if (btn) {
+        e.stopPropagation();
+        openModal(btn.dataset.view);
+      } else if (card) {
+        openModal(card.dataset.id);
       }
+    });
 
-      function closeModal() {
-        modal.classList.remove("is-open");
-        modal.setAttribute("aria-hidden", "true");
-        document.body.classList.remove("no-scroll");
-      }
+    modal.addEventListener("click", e => {
+      if (e.target.matches("[data-close]")) closeModal();
+    });
+    document.addEventListener("keydown", e => {
+      if (e.key === "Escape" && modal.classList.contains("is-open")) closeModal();
+    });
 
-      // 卡片点击 / 查看攻略按钮：打开弹窗
-      grid.addEventListener("click", e => {
-        const btn = e.target.closest("[data-view]");
-        const card = e.target.closest(".card");
-        if (btn) {
-          e.stopPropagation();
-          openModal(btn.dataset.view);
-        } else if (card) {
-          openModal(card.dataset.id);
-        }
-      });
+    /* ============ 返回顶部 ============ */
+    const toTop = document.getElementById("toTop");
+    window.addEventListener("scroll", () => {
+      toTop.classList.toggle("is-visible", window.scrollY > 480);
+    }, { passive: true });
+    toTop.addEventListener("click", () => {
+      window.scrollTo({ top: 0, behavior: "smooth" });
+    });
 
-      // 关闭：点击关闭按钮或遮罩
-      modal.addEventListener("click", e => {
-        if (e.target.matches("[data-close]")) closeModal();
-      });
-      // ESC 关闭
-      document.addEventListener("keydown", e => {
-        if (e.key === "Escape" && modal.classList.contains("is-open")) closeModal();
-      });
+    /* ============ 年份 ============ */
+    document.getElementById("year").textContent = new Date().getFullYear();
 
-      // 年份
-      document.getElementById("year").textContent = new Date().getFullYear();
-    </script>
-  </body>
+    /* ============ 初始渲染 ============ */
+    applyFilter();
+  </script>
+</body>
+
 </html>
