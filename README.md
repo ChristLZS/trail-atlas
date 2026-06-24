@@ -1,12 +1,12 @@
 # 山野路书 · 发现中国经典徒步路线
 
-> A静态前端 Demo，为 **TRAE AI 创造力大赛**（生活娱乐赛道）打造。
+> 一个静态前端 Demo，为 **TRAE&nbsp;AI 创造力大赛**（生活娱乐赛道）打造。
 
 汇集国内经典徒步路线，整合风景图片、路线难度、最佳季节、行程攻略与安全提示，帮助用户更轻松地规划下一次山野之旅。
 
 ## 在线预览
 
-👉 https://christlzs.github.io/trail-atlas/
+👉 https://trail-atlas.pages.dev/
 
 ## 核心模块
 
@@ -30,4 +30,4 @@ open index.html
 
 ## License
 
-仅用于 TRAE AI 创造力大赛初赛创意展示。
+仅用于 TRAE&nbsp;AI 创造力大赛初赛创意展示。
